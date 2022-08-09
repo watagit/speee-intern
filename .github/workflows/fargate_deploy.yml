@@ -1,0 +1,47 @@
+name: 'Fargate deployment on main branch'
+on:
+#  push:
+#    branches:
+#      - main
+  workflow_dispatch:
+
+jobs:
+  fargate_deploy:
+    name: 'Fargate Deploy'
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: production
+      AWS_DEFAULT_REGION: ap-northeast-1
+      AWS_DEFAULT_OUTPUT: json
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v1
+      - name: 'Docker Login'
+        run: |
+          aws ecr get-login-password | docker login --username AWS --password-stdin 150770890717.dkr.ecr.ap-northeast-1.amazonaws.com/internship_sep2022_1
+      - name: 'Build Application image'
+        run: |
+          docker pull 150770890717.dkr.ecr.ap-northeast-1.amazonaws.com/internship_sep2022_1:build-cache || true
+          docker build . -f Dockerfile.production -t internship_sep2022_1 --cache-from 150770890717.dkr.ecr.ap-northeast-1.amazonaws.com/internship_sep2022_1:build-cache --build-arg RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}
+      - name: 'Push Application image'
+        run: |
+          docker tag internship_sep2022_1:latest 150770890717.dkr.ecr.ap-northeast-1.amazonaws.com/internship_sep2022_1:latest
+          docker push 150770890717.dkr.ecr.ap-northeast-1.amazonaws.com/internship_sep2022_1:latest
+          docker tag internship_sep2022_1:latest 150770890717.dkr.ecr.ap-northeast-1.amazonaws.com/internship_sep2022_1:build-cache
+          docker push 150770890717.dkr.ecr.ap-northeast-1.amazonaws.com/internship_sep2022_1:build-cache
+      - name: 'Run migration task'
+        id: migration-task
+        run: |
+          echo "::set-output name=migration-task-id::$(aws ecs run-task --cluster internship-sep2022-1 --task-definition internship-sep2022-1-migration --launch-type FARGATE --network-configuration '{"awsvpcConfiguration":{"subnets":["subnet-0334f01a7f2e84910","subnet-06e60f8f517606654","subnet-0df45f1bdece2446d"],"securityGroups": ["sg-03bfb5efe23f023fe"],"assignPublicIp":"ENABLED"}}' --count 1 | jq -r '.tasks[0].taskArn')"
+      - name: 'Wait for migration task to finish'
+        run: |
+          aws ecs wait tasks-stopped --cluster internship-sep2022-1 --tasks "${{ steps.migration-task.outputs.migration-task-id }}"
+          exit $(aws ecs describe-tasks --cluster internship-sep2022-1 --tasks "${{ steps.migration-task.outputs.migration-task-id }}" | jq -r '.tasks[0].containers[0].exitCode')
+      - name: 'Update ECS service'
+        run: |
+          aws ecs update-service --cluster internship-sep2022-1 --service internship-sep2022-1 --task-definition internship-sep2022-1 --force-new-deployment
+      - name: 'Wait for ECS service deployment'
+        run: |
+          aws ecs wait services-stable --cluster internship-sep2022-1 --service internship-sep2022-1

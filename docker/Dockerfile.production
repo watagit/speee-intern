@@ -1,0 +1,22 @@
+
+
+FROM ruby:3.1.2
+
+ENV TZ Asia/Tokyo
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
+ENV RAILS_ENV=production
+
+RUN gem install bundler:2.3.19
+
+RUN mkdir /app
+COPY . /app
+WORKDIR /app
+
+RUN mkdir -p tmp/pids log
+
+RUN bundle install --jobs 4
+
+RUN bin/rails assets:precompile
+CMD rm -f tmp/pids/server.pid && bin/rails server --binding=0.0.0.0
+

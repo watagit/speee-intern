@@ -24,7 +24,7 @@ jobs:
       - name: 'Build Application image'
         run: |
           docker pull 150770890717.dkr.ecr.ap-northeast-1.amazonaws.com/internship_sep2022_1:build-cache || true
-          docker build . -f Dockerfile.production -t internship_sep2022_1 --cache-from 150770890717.dkr.ecr.ap-northeast-1.amazonaws.com/internship_sep2022_1:build-cache --build-arg RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}
+          docker build . -f './docker/Dockerfile.production' -t internship_sep2022_1 --cache-from 150770890717.dkr.ecr.ap-northeast-1.amazonaws.com/internship_sep2022_1:build-cache --build-arg RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}
       - name: 'Push Application image'
         run: |
           docker tag internship_sep2022_1:latest 150770890717.dkr.ecr.ap-northeast-1.amazonaws.com/internship_sep2022_1:latest

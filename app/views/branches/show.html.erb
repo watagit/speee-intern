@@ -5,9 +5,10 @@
   <p><%= @branch.introduction %></p>
 </div>
 
-<br>
-<h2>口コミがここに入る</h2>
-<br>
+<h3><%= @branch.company.name %>についての口コミ</h3>
+<% @branch.reviews.each do |review| %>
+  <%= render 'review', review: review %>
+<% end %>
 
 <div>
   <h2><%= @branch.company.name %>について</h2>

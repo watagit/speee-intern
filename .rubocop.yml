@@ -34,3 +34,6 @@ Rubycw:
 
 Security:
   Enabled: true
+
+Style/Documentation:
+  Enabled: false

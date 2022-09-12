@@ -31,9 +31,7 @@ Layout/MultilineOperationIndentation:
 # This cop supports safe autocorrection (--autocorrect).
 Layout/SpaceAfterColon:
   Exclude:
-    - 'db/migrate/20220912022855_create_companies.rb'
-    - 'db/migrate/20220912024225_create_prefectures.rb'
-    - 'db/migrate/20220912030019_create_branches.rb'
+    - 'db/migrate/*'
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
@@ -98,16 +96,8 @@ Style/Documentation:
   Exclude:
     - 'spec/**/*'
     - 'test/**/*'
-    - 'app/controllers/health_check_controller.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'config/application.rb'
-    - 'db/migrate/20220912022855_create_companies.rb'
-    - 'db/migrate/20220912024225_create_prefectures.rb'
-    - 'db/migrate/20220912024717_create_property_types.rb'
-    - 'db/migrate/20220912025153_create_cities.rb'
-    - 'db/migrate/20220912030019_create_branches.rb'
-    - 'db/migrate/20220912040045_create_reviews.rb'
-    - 'db/migrate/20220912041145_create_available_areas.rb'
+    - 'db/migrate/*'
+    - 'db/schema.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_030019) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_040045) do
   create_table "branches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "zip_code", null: false
@@ -56,7 +56,41 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_030019) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "gender", null: false
+    t.integer "age", null: false
+    t.integer "sell_count", null: false
+    t.date "considering_selling_at", null: false
+    t.date "assessment_requested_at", null: false
+    t.date "sales_started_at", null: false
+    t.date "sold_at", null: false
+    t.date "delivered_at", null: false
+    t.integer "assessment_price", null: false
+    t.integer "sold_price", null: false
+    t.boolean "is_discount", null: false
+    t.integer "discount_date_type_after_sales_started"
+    t.integer "discount_price"
+    t.integer "brokerage_contract_type", null: false
+    t.string "headline", null: false
+    t.integer "reason_for_sale", null: false
+    t.text "comment_anxiety", null: false
+    t.text "comment_reason_to_decide", null: false
+    t.integer "satisfaction_level", null: false
+    t.text "comment_reason_for_satisfaction", null: false
+    t.text "advice", null: false
+    t.text "comment_improvement", null: false
+    t.bigint "property_type_id", null: false
+    t.bigint "city_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_reviews_on_city_id"
+    t.index ["property_type_id"], name: "index_reviews_on_property_type_id"
+  end
+
   add_foreign_key "branches", "cities"
   add_foreign_key "branches", "companies"
   add_foreign_key "cities", "prefectures"
+  add_foreign_key "reviews", "cities"
+  add_foreign_key "reviews", "property_types"
 end

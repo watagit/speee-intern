@@ -1,3 +1,22 @@
-<h1>店舗画面</h1>
+<h1><%= @branch.company.name %><%= @branch.name %></h1>
 
-<%= @branch.name %>
+<div>
+  <p><%= @branch.company.catch_copy %></p>
+  <p><%= @branch.introduction %></p>
+</div>
+
+<br>
+<h2>口コミがここに入る</h2>
+<br>
+
+<div>
+  <h2><%= @branch.company.name %>について</h2>
+  <p>企業名 : <%= @branch.company.name %></p>
+  <p>郵便番号 : <%= @branch.zip_code %></p>
+  <p>住所 : <%= @branch.city.prefecture.name %><%= @branch.city.name %><%= @branch.after_address %></p>
+  <p>電話番号 : <%= @branch.phone_number %></p>
+  <p>FAX : <%= @branch.fax_number %></p>
+  <p>営業時間 : <%= @branch.business_hours %></p>
+  <p>定休日 : <%= @branch.closed_day %></p>
+  <img class="log_url" src=<%= @branch.company.logo_url %> alt="log_url">
+</div>

@@ -9,6 +9,7 @@ inherit_mode:
 require:
   - rubocop-performance
   - rubocop-rubycw
+  - rubocop-rails
 
 AllCops:
   DisabledByDefault: true

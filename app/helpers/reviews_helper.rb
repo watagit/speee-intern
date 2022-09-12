@@ -1,3 +1,4 @@
+
 module BranchesHelper
   # 価格をフォーマットする
   # 例）20000000 => 2,000万円

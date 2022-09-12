@@ -1,7 +1,8 @@
 class City < ApplicationRecord
   has_many :reviews
   belongs_to :prefecture
-  has_many :branches, through: :available_areas
-  # TODO: 1つのモデルに対して複数のhas_manyを指定する場合の関連付けを正しくする
-  has_many :branches
+  # 中間テーブルを介した関連付け
+  has_many :branches, class_name: "Branch", through: :available_areas
+  # 中間テーブルを介さない関連付け
+  has_many :branch_cities, class_name: "Branch", foreign_key: "city_id"
 end

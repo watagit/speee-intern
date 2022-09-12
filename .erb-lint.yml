@@ -1,0 +1,6 @@
+---
+glob: "**/*.{html,text,js}{+*,}.erb"
+linters:
+  # 自動生成したERBファイルの閉じタグを除外
+  SelfClosingTag:
+    enabled: false

@@ -1,0 +1,2 @@
+class AvailableArea < ApplicationRecord
+end

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_040045) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_041145) do
+  create_table "available_areas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "city_id", null: false
+    t.bigint "branch_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["branch_id"], name: "index_available_areas_on_branch_id"
+    t.index ["city_id"], name: "index_available_areas_on_city_id"
+  end
+
   create_table "branches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "zip_code", null: false
@@ -88,6 +97,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_040045) do
     t.index ["property_type_id"], name: "index_reviews_on_property_type_id"
   end
 
+  add_foreign_key "available_areas", "branches"
+  add_foreign_key "available_areas", "cities"
   add_foreign_key "branches", "cities"
   add_foreign_key "branches", "companies"
   add_foreign_key "cities", "prefectures"

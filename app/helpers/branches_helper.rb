@@ -1,4 +1,6 @@
 module BranchesHelper
+  # 価格をフォーマットする
+  # 例）20000000 => 2,000万円
   def format_price(price)
     price /= 10000
 
@@ -6,8 +8,9 @@ module BranchesHelper
     "#{price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}万円"
   end
 
+  # 日付をフォーマットする
+  # 例）2022-09-12 => 2022年9月
   def format_date(date)
-    # "2022-09-12" => "2022年9月" に変換
     date.strftime("%Y年%-m月")
   end
 end

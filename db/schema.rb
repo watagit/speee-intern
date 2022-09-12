@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_041145) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_074832) do
   create_table "available_areas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "city_id", null: false
     t.bigint "branch_id", null: false
@@ -46,9 +46,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_041145) do
   end
 
   create_table "companies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "logo_url"
-    t.string "catch_copy"
+    t.string "name", null: false
+    t.string "logo_url", null: false
+    t.string "catch_copy", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,7 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_041145) do
     t.string "name", null: false
     t.string "gender", null: false
     t.integer "age", null: false
-    t.integer "sell_count", null: false
+    t.string "sell_count", null: false
     t.date "considering_selling_at", null: false
     t.date "assessment_requested_at", null: false
     t.date "sales_started_at", null: false

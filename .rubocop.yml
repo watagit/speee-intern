@@ -40,3 +40,10 @@ Security:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - db/seeds.rb
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

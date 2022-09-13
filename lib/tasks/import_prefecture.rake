@@ -12,4 +12,6 @@ task import_prefecture: :environment do
 rescue ActiveRecord::RecordInvalid => e
   logger.error e.message
   logger.error e.backtrace.join("\n")
+ensure
+  puts '都道府県データのインポート完了!'
 end

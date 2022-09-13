@@ -14,4 +14,6 @@ task import_city: :environment do
 rescue ActiveRecord::RecordInvalid => e
   logger.error e.message
   logger.error e.backtrace.join("\n")
+ensure
+  puts '市区町村データのインポート完了!'
 end

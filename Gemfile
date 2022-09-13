@@ -58,6 +58,7 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rubycw'
+  gem 'byebug'
 end
 
 group :development do

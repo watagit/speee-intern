@@ -2,7 +2,7 @@ require 'csv'
 
 desc "都道府県データをインポート"
 task import_prefecture: :environment do
-  CSV.foreach("db/csv_data/住所マスタ都道府県.csv", headers: true) do |row|
+  CSV.foreach("db/csv_data/prefecture.csv", headers: true) do |row|
     prefecture_name = row["name"]
 
     ActiveRecord::Base.transaction do

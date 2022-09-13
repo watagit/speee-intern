@@ -2,7 +2,7 @@ require 'csv'
 
 desc "市区町村データをインポート"
 task import_city: :environment do
-  CSV.foreach("db/csv_data/住所マスタ市区町村.csv", headers: true) do |row|
+  CSV.foreach("db/csv_data/city.csv", headers: true) do |row|
     city_id = row["id"]
     prefecture_id = row["prefecture_id"]
     city_name = row["name"]

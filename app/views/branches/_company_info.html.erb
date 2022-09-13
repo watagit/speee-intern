@@ -10,6 +10,6 @@
     <p class="mb-0">定休日 : <%= @branch.closed_day %></p>
   </div>
   <div class="col d-flex align-items-center">
-    <img src=<%= @branch.company.logo_url %>>
+    <%= image_tag @branch.company.logo_url %>, :alt => 'company_logo'
   </div>
 </div>

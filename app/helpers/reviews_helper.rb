@@ -1,5 +1,4 @@
-
-module BranchesHelper
+module ReviewsHelper
   # 価格をフォーマットする
   # 例）20000000 => 2,000万円
   def format_price(price)

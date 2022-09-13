@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   get '/ops/heartbeat', to: 'health_check#index'
 
   get '/branches/:id', to: 'branches#show'
-  resources :assessment_forms, only:[ :new, :create ]
+  resources :assessment_forms, only: %i[new create]
 end

@@ -1,3 +1,25 @@
-<h1>店舗画面</h1>
+<h1 class="text-center mb-5">
+  <%= @branch.company.name %><%= @branch.name %>
+</h1>
 
-<%= @branch.name %>
+<div class="mb-5">
+  <h3><%= @branch.company.catch_copy %></h3>
+  <p><%= @branch.introduction %></p>
+</div>
+
+<div class="mb-5">
+  <p class="fw-bold"><%= @branch.company.name %>についての口コミ(平均評価 ★<%= @branch.average_satisfaction_level %>)</p>
+  <% @branch.reviews.each do |review| %>
+    <div class="card mb-2">
+      <div class="card-body">
+        <%= render 'review', review: review %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= render 'company_info' %>
+
+<div class="row justify-content-center mb-5">
+  <button type="button" class="btn btn-secondary w-25">査定依頼をする</button>
+</div>

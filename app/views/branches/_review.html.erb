@@ -1,4 +1,4 @@
-<h4><%= review.name %></h4>
+<p class="fw-bold"><%= review.name %>：★<%= review.satisfaction_level %></p>
 <p><%= review.comment_reason_for_satisfaction %></p>
 <div>
   <p>成約価格<%= format_price(review.sold_price) %></p>

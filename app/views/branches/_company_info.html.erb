@@ -1,0 +1,15 @@
+<div class="row mb-5">
+  <div class="col">
+    <p class="fw-bold mb-3"><%= @branch.company.name %>について</p>
+    <p class="mb-0">企業名 : <%= @branch.company.name %></p>
+    <p class="mb-0">郵便番号 : <%= @branch.zip_code %></p>
+    <p class="mb-0">住所 : <%= @branch.city.prefecture.name %><%= @branch.city.name %><%= @branch.after_address %></p>
+    <p class="mb-0">電話番号 : <%= @branch.phone_number %></p>
+    <p class="mb-0">FAX : <%= @branch.fax_number %></p>
+    <p class="mb-0">営業時間 : <%= @branch.business_hours %></p>
+    <p class="mb-0">定休日 : <%= @branch.closed_day %></p>
+  </div>
+  <div class="col d-flex align-items-center">
+    <%= image_tag @branch.company.logo_url, :alt => 'company_logo' %>
+  </div>
+</div>

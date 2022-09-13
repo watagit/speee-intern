@@ -1,3 +1,3 @@
 class Prefecture < ApplicationRecord
-  has_many :cities, dependent: :nullify
+  has_many :cities, dependent: :restrict_with_exception
 end

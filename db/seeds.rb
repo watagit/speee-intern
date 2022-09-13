@@ -54,7 +54,7 @@ end
     considering_selling_at: '2018-02-14',
     assessment_requested_at: '2018-03-14',
     sales_started_at: '2018-03-14',
-    sold_at: '2019-01-14',
+    sold_at: "2019-01-14",
     delivered_at: '2019-07-31',
     assessment_price: 22_000_000,
     sold_price: 22_500_000,

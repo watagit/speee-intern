@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class PropertyType < ApplicationRecord
-  has_many :reviews
+  has_many :reviews, dependent: :restrict_with_exception
 end

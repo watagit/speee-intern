@@ -1,22 +1,25 @@
-<h1><%= @branch.company.name %><%= @branch.name %></h1>
+<h1 class="text-center mb-5">
+  <%= @branch.company.name %><%= @branch.name %>
+</h1>
 
-<div>
-  <p><%= @branch.company.catch_copy %></p>
+<div class="mb-5">
+  <h3><%= @branch.company.catch_copy %></h3>
   <p><%= @branch.introduction %></p>
 </div>
 
-<br>
-<h2>口コミがここに入る</h2>
-<br>
+<div class="mb-5">
+  <p class="fw-bold"><%= @branch.company.name %>についての口コミ(平均評価 ★<%= @branch.average_satisfaction_level %>)</p>
+  <% @branch.reviews.each do |review| %>
+    <div class="card mb-2">
+      <div class="card-body">
+        <%= render 'review', review: review %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<div>
-  <h2><%= @branch.company.name %>について</h2>
-  <p>企業名 : <%= @branch.company.name %></p>
-  <p>郵便番号 : <%= @branch.zip_code %></p>
-  <p>住所 : <%= @branch.city.prefecture.name %><%= @branch.city.name %><%= @branch.after_address %></p>
-  <p>電話番号 : <%= @branch.phone_number %></p>
-  <p>FAX : <%= @branch.fax_number %></p>
-  <p>営業時間 : <%= @branch.business_hours %></p>
-  <p>定休日 : <%= @branch.closed_day %></p>
-  <img class="log_url" src=<%= @branch.company.logo_url %> alt="log_url">
+<%= render 'company_info' %>
+
+<div class="row justify-content-center mb-5">
+  <button type="button" class="btn btn-secondary w-25">査定依頼をする</button>
 </div>

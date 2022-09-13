@@ -3,9 +3,7 @@ module ReviewsHelper
   # 例）20000000 => 2,000万円
   def format_price(price)
     price /= 10000
-
-    # FIXME: price.to_s(:delimited)を使いたかったが動かなかった
-    "#{price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')}万円"
+    "#{number_with_delimiter(price, delimiter: ',')}万円"
   end
 
   # 日付をフォーマットする

@@ -15,7 +15,6 @@ task import_company: :environment do
     csv_city_name = row['市区町村']
     city_object = City.find_by(name: csv_city_name)
     city_id = city_object.id
-    
 
     # for company table
     csv_company_name = row['企業名']

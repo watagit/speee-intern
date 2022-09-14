@@ -22,6 +22,13 @@ task import_company: :environment do
     puts "import done企業名 = #{csv_company_name}"
     logo_url = row['ロゴURL']
     catch_copy = row['キャッチコピー']
+
+    # for available area table
+    available_area = row["査定依頼可能エリア"]
+    available_area.each do |line|
+      puts line
+    end
+    byebug
     # city_name csv_company_name のデータが無ければ、company_name: csv_company_name がcreateされる。
     ActiveRecord::Base.transaction do
       company_i = Company.find_or_create_by!(name: csv_company_name) do |company|

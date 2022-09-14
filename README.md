@@ -29,12 +29,6 @@ docker exec -it ${CONTAINER ID} bash
 docker-compose run --rm app bin/rails test
 ```
 
-## Rubocop の実行
-
-``` bash
-docker-compose run --rm app rubocop
-```
-
 ## docker 内で Rubocop の実行
 
 rubocop実行

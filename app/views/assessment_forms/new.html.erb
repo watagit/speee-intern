@@ -1,1 +1,93 @@
-assessment_forms#newのビュー
+<h1>査定依頼フォーム</h1>
+<p>査定対象物件の情報を入力してください。</p>
+<%= form_with url: assessment_forms_path ,methods: :post, local: true  do |form| %>
+
+  <%= form.hidden_field :branch_id, value: 1 %>
+
+  <div>
+    <%= form.label :prefecture_id, '都道府県 (必須)' %>
+    <%= form.select :prefecture_id, [ ['北海道',1], ['秋田県', 2]], prompt: "都道府県を選択してください" %>
+  </div>
+
+  <div>
+    <%= form.label :city_id, '市区町村 (必須)' %>
+    <%= form.select :city_id, [ ['札幌市',1], ['苫小牧', 2]], prompt: "市区町村を選択してください" %>
+  </div>
+
+  <div>
+    <%= form.label :property_address, '市区町村以下の住所 (必須)' %>
+    <%= form.text_field :property_address %>
+  </div>
+
+  <div>
+    <%= form.label :property_type, '物件種別 (必須)' %>
+    <%= form.select :property_type, [ ['分譲マンション',1], ['一戸建て', 2], ['土地', 3]], prompt: '物件種別を選択してください' %>
+  </div>
+
+  <div>
+    <%= form.label :property_exclusive_area, '専有面積 (必須)' %>
+    <%= form.number_field :property_exclusive_area %>
+  </div>
+
+  <div>
+    <%= form.label :property_land_area, '土地面積 (必須)' %>
+    <%= form.number_field :property_land_area %>
+  </div>
+
+  <div>
+    <%= form.label :property_building_area, '建物面積 (必須)' %>
+    <%= form.number_field :property_building_area %>
+  </div>
+
+  <div>
+    <%= form.label :property_building_area_unit, '建物面積単位 (必須)' %>
+    <%= form.select :property_building_area_unit, [ ['平方メートル',1], ['坪', 2]], prompt: '建物の面積単位を選択してください' %>
+  </div>
+
+  <div>
+    <%= form.label :property_floor_area, '延床面積 (必須)' %>
+    <%= form.number_field :property_floor_area %>
+  </div>
+
+  <div>
+    <%= form.label :property_room_plan, '間取り (必須)' %>
+    <%= form.select :property_room_plan, [ ['1R(ワンルーム)',1], ['1K/1DK', 2], ['1LK/1LDK', 3], ['2K/2DLK', 4], ['2LK / 2LDK', 5], ['3K/3DK', 6], ['3LK/3LDK', 7], ['4K/4DK', 8], ['4LK/4LDK', 9], ['5K/5DK',10], ['5LK/5LDK', 11], ['6K/6DK', 12], ['6LK/6LDK以上', 13]], prompt: '間取りを選択してください' %>
+  </div>
+
+  <div>
+    <%= form.label :property_constructed_year, '築年数 (必須)' %>
+    <%= form.number_field :property_constructed_year %>
+  </div>
+
+  <div>
+  <%= form.label :user_email, 'メールアドレス(必須)' %>
+  <%= form.email_field :user_email %>
+  </div>
+
+  <div>
+  <%= form.label :first_name, '苗字 (必須)' %>
+  <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, '名前 (必須)' %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name_kana, 'みょうじ (必須)' %>
+    <%= form.text_field :last_name_kana %>
+  </div>
+
+  <div>
+    <%= form.label :first_name_kana, 'なまえ (必須)' %>
+    <%= form.text_field :first_name_kana %>
+  </div>
+
+  <div>
+    <%= form.label :user_tel, '電話番号 (必須)' %>
+    <%= form.text_field :user_tel %>
+  </div>
+
+  <%= form.submit :submit %>
+<% end %>

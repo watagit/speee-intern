@@ -1,5 +1,6 @@
 require 'csv'
 
+# rubocop:disable Metrics/BlockLength
 desc '企業データをインポート'
 task import_company: :environment do
   CSV.foreach('db/csv_data/company_and_branch.csv', headers: true) do |row|
@@ -48,3 +49,4 @@ rescue ActiveRecord::RecordInvalid => e
 ensure
   puts '企業データのインポート完了!'
 end
+# rubocop:enable Metrics/BlockLength

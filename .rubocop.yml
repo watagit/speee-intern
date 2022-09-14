@@ -44,7 +44,6 @@ Style/Documentation:
 Metrics/BlockLength:
   Exclude:
     - db/seeds.rb
-    - lib/tasks/*
 
 Style/FrozenStringLiteralComment:
   Enabled: false

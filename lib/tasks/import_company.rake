@@ -2,8 +2,8 @@ require 'csv'
 
 desc '企業データをインポート'
 task import_company: :environment do
-  CSV.foreach('db/csv_data/企業マスタ.csv', headers: true) do |row|
-    # dor branch table
+  CSV.foreach('db/csv_data/company_and_branch.csv', headers: true) do |row|
+    # for branch table
     branch_name = row['店舗名']
     zip_code = row['郵便番号']
     phone_number = row['電話番号']
@@ -16,7 +16,7 @@ task import_company: :environment do
     city_object = City.find_by(name: csv_city_name)
     city_id = city_object.id
 
-    ## for company table
+    # for company table
     csv_company_name = row['企業名']
     logo_url = row['ロゴURL']
     catch_copy = row['キャッチコピー']
@@ -39,15 +39,11 @@ task import_company: :environment do
         company_id: company_i.id,
         city_id:
       )
-      # Company.create!(name: csv_company_name, logo_url: logo_url, catch_copy:catch_copy)
     end
   end
 rescue ActiveRecord::RecordInvalid => e
-  # logger.error e.message
-  # logger.error e.backtrace.join("\n")
-  puts e.message
-  puts e.backtrace.join("\n")
-
+  logger.error e.message
+  logger.error e.backtrace.join("\n")
 ensure
   puts '企業データのインポート完了!'
 end

@@ -15,9 +15,11 @@ task import_company: :environment do
     csv_city_name = row['市区町村']
     city_object = City.find_by(name: csv_city_name)
     city_id = city_object.id
+    
 
     # for company table
     csv_company_name = row['企業名']
+    puts "import done企業名 = #{csv_company_name}"
     logo_url = row['ロゴURL']
     catch_copy = row['キャッチコピー']
     # city_name csv_company_name のデータが無ければ、company_name: csv_company_name がcreateされる。

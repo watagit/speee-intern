@@ -20,6 +20,6 @@
 
 <%= render 'company_info' %>
 
-<div class="row justify-content-center mb-5">
-  <button type="button" class="btn btn-secondary w-25">査定依頼をする</button>
+<div class="text-center mb-5">
+  <%= button_to "査定依頼をする", new_assessment_form_path, method: :get, class: 'btn btn-secondary w-25' %>
 </div>

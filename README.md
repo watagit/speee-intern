@@ -14,7 +14,13 @@ docker-compose run --rm app bin/setup
 
 ``` bash
 docker-compose up
-open http://localhost:13000
+open http://localhost:3000
+```
+
+## docker 内に移動
+
+```
+docker exec -it ${CONTAINER ID} bash
 ```
 
 ## テストの実行
@@ -23,10 +29,33 @@ open http://localhost:13000
 docker-compose run --rm app bin/rails test
 ```
 
-## Rubocop の実行
+## docker 内で Rubocop の実行
 
-``` bash
-docker-compose run --rm app rubocop
+rubocop実行
+```
+bundle exec rubocop
+```
+
+rubocopで修正
+```
+bundle exec rubocop -a
+```
+
+rubocopで修正（強制）
+```
+bundle exec rubocop -A
+```
+
+## docker 内で erblint の実行
+
+erblint実行
+```
+bundle exec erblint --lint-all
+```
+
+erblintで修正
+```
+bundle exec erblint --lint-all -a
 ```
 
 ## サーバへのデプロイ

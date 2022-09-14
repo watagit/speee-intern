@@ -14,7 +14,7 @@ docker-compose run --rm app bin/setup
 
 ``` bash
 docker-compose up
-open http://localhost:13000
+open http://localhost:3000
 ```
 
 ## docker 内に移動

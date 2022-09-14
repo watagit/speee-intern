@@ -17,6 +17,12 @@ docker-compose up
 open http://localhost:13000
 ```
 
+## docker 内に入る
+
+```
+docker exec -it ${CONTAINER ID} bash
+```
+
 ## テストの実行
 
 ``` bash
@@ -27,6 +33,20 @@ docker-compose run --rm app bin/rails test
 
 ``` bash
 docker-compose run --rm app rubocop
+```
+
+## docker 内でRubocop の実行
+rubocop実行
+```
+bundle exec rubocop
+```
+rubocopで修正
+```
+bundle exec rubocop -a
+```
+rubocopで修正（強制）
+```
+bundle exec rubocop -A
 ```
 
 ## サーバへのデプロイ

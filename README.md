@@ -61,7 +61,7 @@ bundle exec erblint --lint-all
 
 erblintで修正
 ```
-erblint --lint-all -a
+bundle exec erblint --lint-all -a
 ```
 
 ## サーバへのデプロイ

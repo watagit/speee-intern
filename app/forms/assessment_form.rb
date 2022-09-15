@@ -42,6 +42,6 @@ class AssessmentForm
     validates :last_name
     validates :first_name_kana
     validates :last_name_kana
-    validates :user_tel
+    validates :user_tel, length: { maximum: 11, minimum: 10 }
   end
 end

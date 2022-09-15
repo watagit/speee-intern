@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_041233) do
     t.bigint "city_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "ieu_branch_id", null: false
+    t.integer "ieul_branch_id", null: false
     t.index ["city_id"], name: "index_branches_on_city_id"
     t.index ["company_id"], name: "index_branches_on_company_id"
   end

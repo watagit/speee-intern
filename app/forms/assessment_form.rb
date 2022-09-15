@@ -2,7 +2,7 @@ class AssessmentForm
   include ActiveModel::Model
   include ActiveModel::Attributes
 
-  attribute :branch_id, Integer
+  attribute :branch_id
   attribute :prefecture_id
   attribute :city_id
   attribute :property_type

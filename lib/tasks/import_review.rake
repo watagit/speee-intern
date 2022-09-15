@@ -72,6 +72,6 @@ rescue StandardError => e
   logger.error e.message
   logger.error e.backtrace.join("\n")
 ensure
-  puts '口コミデータの作成が完了したよ！！！！'
+  puts '口コミデータのインポートが完了したよ！！！！'
 end
 # rubocop:enable Metrics/BlockLength

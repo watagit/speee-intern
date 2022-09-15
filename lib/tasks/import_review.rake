@@ -1,7 +1,7 @@
 require 'csv'
 
 # rubocop:disable Metrics/BlockLength
-desc '口コミデータを作成'
+desc '口コミデータをインポート'
 task import_review: :environment do
   CSV.foreach('db/csv_data/review.csv', headers: true) do |row|
     branch_id = row['ieul_店舗id']

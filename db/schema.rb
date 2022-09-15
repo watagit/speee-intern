@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_15_020516) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_15_041233) do
   create_table "available_areas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "city_id", null: false
     t.bigint "branch_id", null: false
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_020516) do
     t.bigint "city_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ieul_branch_id", null: false
     t.index ["city_id"], name: "index_branches_on_city_id"
     t.index ["company_id"], name: "index_branches_on_company_id"
   end

@@ -1,5 +1,7 @@
 class AssessmentFormsController < ApplicationController
-  def new; end
+  def new
+    @assessment_form = AssessmentForm.new
+  end
 
   def create
     @assessment_form = AssessmentForm.new(assessment_form_params)

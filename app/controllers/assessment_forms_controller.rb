@@ -1,6 +1,6 @@
 class AssessmentFormsController < ApplicationController
   def new
-    @assessment_form = AssessmentForm.new()
+    @assessment_form = AssessmentForm.new
   end
 
   def create

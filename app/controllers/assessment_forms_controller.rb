@@ -1,6 +1,7 @@
 class AssessmentFormsController < ApplicationController
   def new
     @assessment_form = AssessmentForm.new
+    @ieul_branch_id = params[:ieul_branch_id]
   end
 
   def create
@@ -19,7 +20,7 @@ class AssessmentFormsController < ApplicationController
 
   def assessment_form_params
     params.permit(
-      :branch_id,
+      :ieul_branch_id,
       :property_city,
       :property_type,
       :property_exclusive_area,
@@ -41,7 +42,7 @@ class AssessmentFormsController < ApplicationController
 
   def post_assessment(assessment_form_params)
     api_params = {
-      branch_id: 1,
+      branch_id: params[:ieul_branch_id],
       property_city: params[:property_city],
       property_address: params[:property_address],
       property_type: params[:property_type],
@@ -54,8 +55,8 @@ class AssessmentFormsController < ApplicationController
       property_room_plan: params[:property_room_plan],
       property_constructed_year: params[:property_constructed_year],
       user_email: params[:user_email],
-      user_name: params[:last_name] + params[:first_name],
-      user_name_kana: params[:last_name_kana] + params[:first_name_kana],
+      user_name: params[:last_name] + ' ' + params[:first_name],
+      user_name_kana: params[:last_name_kana] + ' ' + params[:first_name_kana],
       user_tel: params[:user_tel]
     }
     uri = URI.parse('https://miniul-api.herokuapp.com/affiliate/v2/conversions')

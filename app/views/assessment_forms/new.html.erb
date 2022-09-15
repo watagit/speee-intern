@@ -29,8 +29,8 @@
       <label for="property_city" class="col-form-label">市区町村 (必須)</label>
     </div>
     <div class="col-7">
-      <%= form.collection_select :city_id, City.all, :id, :name, { prompt: "市区町村を選択してください" }, { id: 'city', class: 'form-select' } %>
-      <% @assessment_form.errors.full_messages_for(:city_id).each do |message| %>
+      <%= form.collection_select :property_city, City.all, :id, :name, { prompt: "市区町村を選択してください" }, { id: 'city', class: 'form-select' } %>
+      <% @assessment_form.errors.full_messages_for(:property_city).each do |message| %>
          <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>

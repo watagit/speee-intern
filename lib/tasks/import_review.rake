@@ -1,5 +1,6 @@
 require 'csv'
 
+# rubocop:disable Metrics/BlockLength
 desc '口コミデータを作成'
 task import_review: :environment do
   CSV.foreach('db/csv_data/review.csv', headers: true) do |row|
@@ -34,40 +35,43 @@ task import_review: :environment do
     ActiveRecord::Base.transaction do
       property_type = PropertyType.find_or_create_by(name: csv_property_type)
       city = City.find_by(name: city_name)
-      is_discount = discount.to_i == 0 ? false : true
+      is_discount = discount.to_i == 1
 
       Review.create!(
         name: user_name,
-        gender: gender,
-        age: age,
-        sell_count: sell_count,
-        considering_selling_at: considering_selling_at,
-        assessment_requested_at: assessment_requested_at,
-        sales_started_at: sales_started_at,
-        sold_at: sold_at,
-        delivered_at: delivered_at,
-        assessment_price: assessment_price,
-        sold_price: sold_price,
-        is_discount: is_discount,
-        discount_date_type_after_sales_started: discount_date_type_after_sales_started,
-        discount_price: discount_price,
-        brokerage_contract_type: brokerage_contract_type,
-        headline: headline,
-        reason_for_sale: reason_for_sale,
-        comment_anxiety: comment_anxiety,
-        comment_reason_to_decide: comment_reason_to_decide,
-        satisfaction_level: satisfaction_level,
-        comment_reason_for_satisfaction: comment_reason_for_satisfaction,
-        advice: advice,
-        comment_improvement: comment_improvement,
+        gender:,
+        age:,
+        sell_count:,
+        considering_selling_at:,
+        assessment_requested_at:,
+        sales_started_at:,
+        sold_at:,
+        delivered_at:,
+        assessment_price:,
+        sold_price:,
+        is_discount:,
+        discount_date_type_after_sales_started:,
+        discount_price:,
+        brokerage_contract_type:,
+        headline:,
+        reason_for_sale:,
+        comment_anxiety:,
+        comment_reason_to_decide:,
+        satisfaction_level:,
+        comment_reason_for_satisfaction:,
+        advice:,
+        comment_improvement:,
         property_type_id: property_type.id,
         city_id: city.id,
-        branch_id: branch_id,
-        contract_price: contract_price
+        branch_id:,
+        contract_price:
       )
     end
   end
-rescue => e
+rescue StandardError => e
   logger.error e.message
   logger.error e.backtrace.join("\n")
+ensure
+  puts '口コミデータの作成が完了したよ！！！！'
 end
+# rubocop:enable Metrics/BlockLength

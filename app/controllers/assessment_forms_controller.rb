@@ -40,7 +40,7 @@ class AssessmentFormsController < ApplicationController
     )
   end
 
-  def post_assessment(assessment_form_params)
+  def post_assessment(params)
     api_params = {
       branch_id: params[:ieul_branch_id],
       property_city: params[:property_city],
@@ -55,8 +55,8 @@ class AssessmentFormsController < ApplicationController
       property_room_plan: params[:property_room_plan],
       property_constructed_year: params[:property_constructed_year],
       user_email: params[:user_email],
-      user_name: params[:last_name] + ' ' + params[:first_name],
-      user_name_kana: params[:last_name_kana] + ' ' + params[:first_name_kana],
+      user_name: "#{params[:last_name]} #{params[:first_name]}",
+      user_name_kana: "#{params[:last_name_kana]} #{params[:first_name_kana]}",
       user_tel: params[:user_tel]
     }
     uri = URI.parse('https://miniul-api.herokuapp.com/affiliate/v2/conversions')

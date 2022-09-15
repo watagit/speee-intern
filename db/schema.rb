@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_15_041233) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_15_053329) do
   create_table "available_areas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "city_id", null: false
     t.bigint "branch_id", null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_041233) do
     t.string "catch_copy", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ieul_company_id", null: false
   end
 
   create_table "prefectures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

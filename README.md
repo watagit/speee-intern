@@ -58,6 +58,29 @@ erblintで修正
 bundle exec erblint --lint-all -a
 ```
 
+## docker 内で rake task を実行する手順
+※ db/seeds.rb のモックデータがDBに入っていないか確認してからrakeを実行する
+
+1.都道府県データをインポート
+```
+bundle exec rake import_prefecture
+```
+
+2.市区町村データをインポート
+```
+bundle exec rake import_city
+```
+
+3.企業データをインポート
+```
+bundle exec rake import_company
+```
+
+4.口コミデータをインポート
+```
+bundle exec rake import_review
+```
+
 ## サーバへのデプロイ
 
 0. (初回のみ) `aws ecs run-task --cluster internship-sep2022-1 --task-definition internship-sep2022-1-db-create --launch-type FARGATE --network-configuration '{"awsvpcConfiguration":{"subnets":["subnet-0334f01a7f2e84910","subnet-06e60f8f517606654","subnet-0df45f1bdece2446d"],"securityGroups": ["sg-03bfb5efe23f023fe"],"assignPublicIp":"ENABLED"}}' --count 1` で `rails db:create` を本番環境のDBに適用し、この Rails アプリが使用する MySQL のデータベースを作成する。

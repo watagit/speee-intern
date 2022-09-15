@@ -3,14 +3,12 @@ class AssessmentFormsController < ApplicationController
 
   def create
     @assessment_form = AssessmentForm.new(assessment_form_params)
-    # rubocop:disable Rails/I18nLocaleTexts
     if @assessment_form.valid?
       redirect_to thanks_path
     else
       flash.now[:alert] = '査定情報の送信に失敗しました'
       render action: :new, status: :unprocessable_entity
     end
-    # rubocop:enable Rails/I18nLocaleTexts
   end
 
   private

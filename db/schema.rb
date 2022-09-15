@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_13_084547) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_15_020516) do
   create_table "available_areas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "city_id", null: false
     t.bigint "branch_id", null: false
@@ -88,7 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_084547) do
     t.integer "satisfaction_level", null: false
     t.text "comment_reason_for_satisfaction", null: false
     t.text "advice", null: false
-    t.text "comment_improvement", null: false
+    t.text "comment_improvement"
     t.bigint "property_type_id", null: false
     t.bigint "city_id", null: false
     t.datetime "created_at", null: false

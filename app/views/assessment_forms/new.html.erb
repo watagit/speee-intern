@@ -14,7 +14,7 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="prefecture_id" class="col-form-label">都道府県名 (必須)</label>
+      <%= form.label :prefecture_id, '都道府県 (必須)' , { class: "col-form-label" } %>
     </div>
     <div class="col-7">
       <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: "都道府県を選択してください" }, { id: 'prefecture', class: 'form-select' } %>
@@ -26,23 +26,23 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="city_id" class="col-form-label">市区町村 (必須)</label>
+      <%= form.label :city_id, '市区町村 (必須)', calss: "col-form-label" %>
     </div>
     <div class="col-7">
       <%= form.collection_select :city_id, City.all, :id, :name, { prompt: "市区町村を選択してください" }, { id: 'city', class: 'form-select' } %>
       <% @assessment_form.errors.full_messages_for(:city_id).each do |message| %>
-         <%= message unless message.include?('is not a number') %>
+        <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
   </div>
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="property_address" class="col-form-label">市区町村以下の住所 (必須)</label>
+      <%= form.label :property_address, '市区町村以下の住所 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <input type="text" class="form-control" aria-describedby="property_address" name="property_address" autocomplete="off">
-      <% @assessment_form.errors.full_messages_for(:property_id).each do |message| %>
+      <%= form.text_field :property_address, class: "form-control" %>
+      <% @assessment_form.errors.full_messages_for(:property_address).each do |message| %>
         <%= message %>
       <% end %>
     </div>
@@ -50,15 +50,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="property_type" class="col-form-label">物件種別 (必須)</label>
+      <%= form.label :property_type, '物件種別 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <select class="form-select" aria-label="property_type_select" name="property_type">
-        <option disabled selected value>物件種別を選択してください</option>
-        <option value=1>分譲マンション</option>
-        <option value=2>一戸建て</option>
-        <option value=3>土地</option>
-      </select>
+      <%= form.select :property_type, [['分譲マンション',1], ['一戸建て', 2], ['土地', 3]], {prompt: '物件種別を選択してください'}, {class: "form-select"} %>
       <% @assessment_form.errors.full_messages_for(:property_type).each do |message| %>
         <%= message unless message.include?('is not a number') %>
       <% end %>
@@ -67,10 +62,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="property_exclusive_area" class="col-form-label">専有面積 (必須)</label>
+      <%= form.label :property_exclusive_area, '専有面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <input type="number" class="form-control" aria-describedby="property_exclusive_area" name="property_exclusive_area" autocomplete="off">
+      <%= form.number_field :property_exclusive_area, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:property_exclusive_area).each do |message| %>
         <%= message unless message.include?('is not a number') %>
       <% end %>
@@ -79,10 +74,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="property_land_area" class="col-form-label">土地面積 (必須)</label>
+      <%= form.label :property_land_area, '土地面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <input type="number" class="form-control" aria-describedby="property_land_area" name="property_land_area" autocomplete="off">
+      <%= form.number_field :property_land_area, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:property_land_area).each do |message| %>
         <%= message unless message.include?('is not a number') %>
       <% end %>
@@ -91,10 +86,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="property_building_area" class="col-form-label">建物面積 (必須)</label>
+      <%= form.label :property_building_area, '建物面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <input type="number" class="form-control" aria-describedby="property_building_area" name="property_building_area" autocomplete="off">
+      <%= form.number_field :property_building_area, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:property_building_area).each do |message| %>
         <%= message unless message.include?('is not a number') %>
       <% end %>
@@ -103,14 +98,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="property_building_area_unit" class="col-form-label">建物面積単位 (必須)</label>
+      <%= form.label :property_building_area_unit, '建物面積単位 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <select class="form-select" aria-label="property_building_area_unit_select" name="property_building_area_unit">
-        <option disabled selected value>建物の面積単位を選択してください</option>
-        <option value=1>平方メートル</option>
-        <option value=2>坪</option>
-      </select>
+      <%= form.select :property_building_area_unit, [['平方メートル',1], ['坪', 2]], { prompt: '建物の面積単位を選択してください' }, { class: "form-select" } %>
       <% @assessment_form.errors.full_messages_for(:property_building_area_unit).each do |message| %>
         <%= message unless message.include?('is not a number') %>
       <% end %>
@@ -119,10 +110,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="property_floor_area" class="col-form-label">延床面積 (必須)</label>
+      <%= form.label :property_floor_area, '延床面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <input type="number" class="form-control" aria-describedby="property_floor_area" name="property_floor_area" autocomplete="off">
+      <%= form.number_field :property_floor_area, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:property_floor_area).each do |message| %>
         <%= message unless message.include?('is not a number') %>
       <% end %>
@@ -131,25 +122,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="property_room_plan" class="col-form-label">間取り (必須)</label>
+      <%= form.label :property_room_plan, '間取り (必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <select class="form-select" aria-label="property_room_plan_select" name="property_room_plan">
-        <option disabled selected value>間取りを選択してください</option>
-        <option value=1>1R(ワンルーム)</option>
-        <option value=2>1K/1DK</option>
-        <option value=3>1LK/1LDK</option>
-        <option value=4>2K/2DLK</option>
-        <option value=5>2LK / 2LDK</option>
-        <option value=6>3K/3DK</option>
-        <option value=7>3LK/3LDK</option>
-        <option value=8>4K/4DK</option>
-        <option value=9>4LK/4LDK</option>
-        <option value=10>5K/5DK</option>
-        <option value=11>5LK/5LDK</option>
-        <option value=12>6K/6DK</option>
-        <option value=13>6LK/6LDK以上</option>
-      </select>
+      <%= form.select :property_room_plan, [['1R(ワンルーム)',1], ['1K/1DK', 2], ['1LK/1LDK', 3], ['2K/2DLK', 4], ['2LK / 2LDK', 5], ['3K/3DK', 6], ['3LK/3LDK', 7], ['4K/4DK', 8], ['4LK/4LDK', 9], ['5K/5DK',10], ['5LK/5LDK', 11], ['6K/6DK', 12], ['6LK/6LDK以上', 13]], { prompt: '間取りを選択してください' }, { class: "form-select" } %>
       <% @assessment_form.errors.full_messages_for(:property_room_plan).each do |message| %>
         <%= message unless message.include?('is not a number') %>
       <% end %>
@@ -158,10 +134,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="property_constructed_year" class="col-form-label">築年数 (必須)</label>
+      <%= form.label :property_constructed_year, '築年数 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <input type="number" class="form-control" aria-describedby="property_constructed_year" name="property_constructed_year" autocomplete="off">
+      <%= form.number_field :property_constructed_year, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:property_constructed_year).each do |message| %>
         <%= message unless message.include?('is not a number') %>
       <% end %>
@@ -170,10 +146,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="user_email" class="col-form-label">メールアドレス (必須)</label>
+      <%= form.label :user_email, 'メールアドレス(必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <input type="email" class="form-control" aria-describedby="user_email" name="user_email" autocomplete="off">
+      <%= form.email_field :user_email, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:user_email).each do |message| %>
         <%= message %>
       <% end %>
@@ -182,10 +158,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="last_name" class="col-form-label">姓 (必須)</label>
+      <%= form.label :last_name, '姓 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <input type="text" class="form-control" aria-describedby="last_name" name="last_name" autocomplete="off">
+      <%= form.text_field :last_name, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:last_name).each do |message| %>
         <%= message %>
       <% end %>
@@ -194,10 +170,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="first_name" class="col-form-label">名 (必須)</label>
+      <%= form.label :first_name, '名 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-7">
-      <input type="text" class="form-control" aria-describedby="first_name" name="first_name" autocomplete="off">
+      <%= form.text_field :first_name, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:first_name).each do |message| %>
         <%= message %>
       <% end %>
@@ -206,10 +182,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-        <label for="first_name_kana" class="col-form-label">せい (必須)</label>
+        <%= form.label :last_name_kana, 'せい (必須)', class: "last_name_kana" %>
       </div>
       <div class="col-7">
-        <input type="text" class="form-control" aria-describedby="last_name_kana" name="last_name_kana" autocomplete="off">
+        <%= form.text_field :last_name_kana, class: "form-control" %>
         <% @assessment_form.errors.full_messages_for(:last_name_kana).each do |message| %>
           <%= message %>
         <% end %>
@@ -218,10 +194,10 @@
 
   <div class="row mb-2">
     <div class="col-2">
-        <label for="first_name_kana" class="col-form-label">なまえ (必須)</label>
+        <%= form.label :first_name_kana, 'めい (必須)', class: "col-form-label" %>
       </div>
       <div class="col-7">
-        <input type="text" class="form-control" aria-describedby="first_name_kana" name="first_name_kana" autocomplete="off">
+        <%= form.text_field :first_name_kana, class: "form-control" %>
         <% @assessment_form.errors.full_messages_for(:first_name_kana).each do |message| %>
           <%= message %>
         <% end %>
@@ -230,13 +206,13 @@
 
   <div class="row mb-2">
     <div class="col-2">
-        <label for="user_tel" class="col-form-label">電話番号 (必須)</label>
-      </div>
-      <div class="col-7">
-        <input type="tel" class="form-control" aria-describedby="user_tel" name="user_tel" autocomplete="off">
-        <% @assessment_form.errors.full_messages_for(:user_tel).each do |message| %>
-          <%= message %>
-        <% end %>
+      <%= form.label :user_tel, '電話番号 (必須)', class: "col-form-label" %>
+    </div>
+    <div class="col-7">
+      <%= form.text_field :user_tel, class: "form-control" %>
+      <% @assessment_form.errors.full_messages_for(:user_tel).each do |message| %>
+        <%= message %>
+      <% end %>
     </div>
   </div>
 

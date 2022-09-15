@@ -21,7 +21,7 @@
         <option value=2>秋田県</option>
       </select>
       <% @assessment_form.errors.full_messages_for(:prefecture_id).each do |message| %>
-        <%= message unless message.include?('is not a number')  %>
+        <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
   </div>
@@ -37,7 +37,7 @@
         <option value=2>苫小牧</option>
       </select>
       <% @assessment_form.errors.full_messages_for(:city_id).each do |message| %>
-         <%= message unless message.include?('is not a number')  %>
+         <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
   </div>
@@ -66,7 +66,7 @@
         <option value=3>土地</option>
       </select>
       <% @assessment_form.errors.full_messages_for(:property_type).each do |message| %>
-        <%= message unless message.include?('is not a number')  %>
+        <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
   </div>
@@ -78,7 +78,7 @@
     <div class="col-7">
       <input type="number" class="form-control" aria-describedby="property_exclusive_area" name="property_exclusive_area" autocomplete="off">
       <% @assessment_form.errors.full_messages_for(:property_exclusive_area).each do |message| %>
-        <%= message unless message.include?('is not a number')  %>
+        <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
   </div>
@@ -90,7 +90,7 @@
     <div class="col-7">
       <input type="number" class="form-control" aria-describedby="property_land_area" name="property_land_area" autocomplete="off">
       <% @assessment_form.errors.full_messages_for(:property_land_area).each do |message| %>
-        <%= message unless message.include?('is not a number')  %>
+        <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
   </div>
@@ -102,7 +102,7 @@
     <div class="col-7">
       <input type="number" class="form-control" aria-describedby="property_building_area" name="property_building_area" autocomplete="off">
       <% @assessment_form.errors.full_messages_for(:property_building_area).each do |message| %>
-        <%= message unless message.include?('is not a number')  %>
+        <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
   </div>
@@ -118,7 +118,7 @@
         <option value=2>坪</option>
       </select>
       <% @assessment_form.errors.full_messages_for(:property_building_area_unit).each do |message| %>
-        <%= message unless message.include?('is not a number')  %>
+        <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
   </div>
@@ -130,7 +130,7 @@
     <div class="col-7">
       <input type="number" class="form-control" aria-describedby="property_floor_area" name="property_floor_area" autocomplete="off">
       <% @assessment_form.errors.full_messages_for(:property_floor_area).each do |message| %>
-        <%= message unless message.include?('is not a number')  %>
+        <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
   </div>
@@ -157,7 +157,7 @@
         <option value=13>6LK/6LDK以上</option>
       </select>
       <% @assessment_form.errors.full_messages_for(:property_room_plan).each do |message| %>
-        <%= message unless message.include?('is not a number')  %>
+        <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
   </div>
@@ -169,7 +169,7 @@
     <div class="col-7">
       <input type="number" class="form-control" aria-describedby="property_constructed_year" name="property_constructed_year" autocomplete="off">
       <% @assessment_form.errors.full_messages_for(:property_constructed_year).each do |message| %>
-        <%= message unless message.include?('is not a number')  %>
+        <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
   </div>

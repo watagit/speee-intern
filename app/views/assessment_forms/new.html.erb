@@ -252,6 +252,7 @@
 
     prefectureElement.change(() => {
       const prefectureID = prefectureElement.val();
+
       fetchCitiesByPrefectureID(prefectureID).then((res) => {
         cityElement.children().remove().end();
 

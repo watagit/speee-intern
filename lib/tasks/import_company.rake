@@ -22,34 +22,35 @@ task import_company: :environment do
     puts "import done企業名 = #{csv_company_name}"
     logo_url = row['ロゴURL']
     catch_copy = row['キャッチコピー']
-
+    
     # for available area table
-    available_area = row["査定依頼可能エリア"]
-    available_area.each do |line|
-      puts line
-    end
-    byebug
-    # city_name csv_company_name のデータが無ければ、company_name: csv_company_name がcreateされる。
-    ActiveRecord::Base.transaction do
-      company_i = Company.find_or_create_by!(name: csv_company_name) do |company|
-        company.logo_url = logo_url
-        company.catch_copy = catch_copy
-      end
-
-      Branch.create!(
-        name: branch_name,
-        zip_code:,
-        phone_number:,
-        fax_number:,
-        business_hours:,
-        closed_day:,
-        introduction:,
-        after_address:,
-        company_id: company_i.id,
-        city_id:
-      )
+    available_area = row["査定依頼可能エリア"].split(",").map!{|x| x.to_i}  # city_id
+    available_area.each do |city|
+      ## 各行のcity_idをfor分で取得
     end
   end
+  #   byebug
+  #   # city_name csv_company_name のデータが無ければ、company_name: csv_company_name がcreateされる。
+  #   ActiveRecord::Base.transaction do
+  #     company_i = Company.find_or_create_by!(name: csv_company_name) do |company|
+  #       company.logo_url = logo_url
+  #       company.catch_copy = catch_copy
+  #     end
+
+  #     Branch.create!(
+  #       name: branch_name,
+  #       zip_code:,
+  #       phone_number:,
+  #       fax_number:,
+  #       business_hours:,
+  #       closed_day:,
+  #       introduction:,
+  #       after_address:,
+  #       company_id: company_i.id,
+  #       city_id:
+  #     )
+  #   end
+  # end
 rescue ActiveRecord::RecordInvalid => e
   logger.error e.message
   logger.error e.backtrace.join("\n")

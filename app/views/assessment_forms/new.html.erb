@@ -247,20 +247,23 @@
 
 <script>
   window.onload = () => {
-    const prefecture = $('#prefecture');
-    prefecture.change(() => {
-      const prefectureID = prefecture.val();
+    const prefectureElement = $('#prefecture');
+    const cityElement = $('#city');
+
+    prefectureElement.change(() => {
+      const prefectureID = prefectureElement.val();
       fetchCitiesByPrefectureID(prefectureID).then((res) => {
-        $('#city').children().remove().end()
+        cityElement.children().remove().end();
+
         res.map((city) => {
-          $('#city').append($('<option>', {
+          cityElement.append($('<option>', {
             value: city.id,
-            text: city.name
-          }))
-        })
-      })
+            text: city.name,
+          }));
+        });
+      });
     });
-  }
+  };
 
   async function fetchCitiesByPrefectureID(id) {
     const response = await fetch(`/api/prefectures/${id}/cities`);

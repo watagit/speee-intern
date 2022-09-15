@@ -17,11 +17,7 @@
       <label for="prefecture_id" class="col-form-label">都道府県名 (必須)</label>
     </div>
     <div class="col-7">
-      <select class="form-select" aria-label="city_select" name="prefecture_id">
-        <option disabled selected value>都道府県を選択してください</option>
-        <option value=1>北海道</option>
-        <option value=2>秋田県</option>
-      </select>
+      <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: "都道府県を選択してください" }, { id: 'prefecture', class: 'form-select' } %>
       <% @assessment_form.errors.full_messages_for(:prefecture_id).each do |message| %>
         <%= message unless message.include?('is not a number') %>
       <% end %>
@@ -33,11 +29,7 @@
       <label for="city_id" class="col-form-label">市区町村 (必須)</label>
     </div>
     <div class="col-7">
-      <select class="form-select" aria-label="city_select" name="city_id">
-        <option disabled selected value>市区町村を選択してください</option>
-        <option value=1>札幌市</option>
-        <option value=2>苫小牧</option>
-      </select>
+      <%= form.collection_select :city_id, City.all, :id, :name, { prompt: "市区町村を選択してください" }, { id: 'city', class: 'form-select' } %>
       <% @assessment_form.errors.full_messages_for(:city_id).each do |message| %>
          <%= message unless message.include?('is not a number') %>
       <% end %>
@@ -252,3 +244,30 @@
     <button type="submit" class="btn btn-secondary w-25">査定依頼をする</button>
   </div>
 <% end %>
+
+<script>
+  window.onload = () => {
+    const prefectureElement = $('#prefecture');
+    const cityElement = $('#city');
+
+    prefectureElement.change(() => {
+      const prefectureID = prefectureElement.val();
+
+      fetchCitiesByPrefectureID(prefectureID).then((res) => {
+        cityElement.children().remove().end();
+
+        res.map((city) => {
+          cityElement.append($('<option>', {
+            value: city.id,
+            text: city.name,
+          }));
+        });
+      });
+    });
+  };
+
+  async function fetchCitiesByPrefectureID(id) {
+    const response = await fetch(`/api/prefectures/${id}/cities`);
+    return await response.json();
+  }
+</script>

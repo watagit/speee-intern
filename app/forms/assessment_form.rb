@@ -3,8 +3,7 @@ class AssessmentForm
   include ActiveModel::Attributes
 
   attribute :branch_id
-  attribute :prefecture_id
-  attribute :city_id
+  attribute :property_city
   attribute :property_type
   attribute :property_exclusive_area
   attribute :property_land_area
@@ -24,8 +23,7 @@ class AssessmentForm
   with_options presence: true do
     with_options numericality: { only_integer: true } do
       validates :branch_id
-      validates :prefecture_id
-      validates :city_id
+      validates :property_city
       validates :property_type
       validates :property_exclusive_area
       validates :property_land_area

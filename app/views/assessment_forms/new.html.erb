@@ -15,28 +15,25 @@
       <label for="prefecture_id" class="col-form-label">都道府県名 (必須)</label>
     </div>
     <div class="col-7">
-      <select class="form-select" aria-label="city_select" name="prefecture_id">
+      <select class="form-select" aria-label="city_select">
         <option disabled selected value>都道府県を選択してください</option>
         <option value=1>北海道</option>
         <option value=2>秋田県</option>
       </select>
-      <% @assessment_form.errors.full_messages_for(:prefecture_id).each do |message| %>
-        <%= message unless message.include?('is not a number') %>
-      <% end %>
     </div>
   </div>
 
   <div class="row mb-2">
     <div class="col-2">
-      <label for="city_id" class="col-form-label">市区町村 (必須)</label>
+      <label for="property_city" class="col-form-label">市区町村 (必須)</label>
     </div>
     <div class="col-7">
-      <select class="form-select" aria-label="city_select" name="city_id">
+      <select class="form-select" aria-label="city_select" name="property_city">
         <option disabled selected value>市区町村を選択してください</option>
         <option value=1>札幌市</option>
         <option value=2>苫小牧</option>
       </select>
-      <% @assessment_form.errors.full_messages_for(:city_id).each do |message| %>
+      <% @assessment_form.errors.full_messages_for(:property_city).each do |message| %>
          <%= message unless message.include?('is not a number') %>
       <% end %>
     </div>
@@ -179,7 +176,7 @@
       <label for="user_email" class="col-form-label">メールアドレス (必須)</label>
     </div>
     <div class="col-7">
-      <input type="email" class="form-control" aria-describedby="user_email" name="user_email" autocomplete="off">
+      <input class="form-control" aria-describedby="user_email" name="user_email" autocomplete="off">
       <% @assessment_form.errors.full_messages_for(:user_email).each do |message| %>
         <%= message %>
       <% end %>

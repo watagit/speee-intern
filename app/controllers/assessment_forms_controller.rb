@@ -16,7 +16,7 @@ class AssessmentFormsController < ApplicationController
 
   private
 
-  # rubocop:disable  Metrics/MethodLength
+  # rubocop:disable  Metrics/*
 
   def assessment_form_params
     params.permit(
@@ -64,5 +64,5 @@ class AssessmentFormsController < ApplicationController
 
     response.code == '200'
   end
-  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/*
 end

@@ -8,7 +8,7 @@
 
 <p>査定対象物件の情報を入力してください。</p>
 
-<%= form_with url: assessment_forms_path ,methods: :post, local: true  do |form| %>
+<%= form_with model: @assessment_form, methods: :post, local: true do |form| %>
 
   <%= form.hidden_field :branch_id, value: 1 %>
 

@@ -18,7 +18,7 @@ class AssessmentFormsController < ApplicationController
   # rubocop:disable  Metrics/MethodLength
 
   def assessment_form_params
-    params.permit(
+    params.require(:assessment_form).permit(
       :branch_id,
       :prefecture_id,
       :city_id,

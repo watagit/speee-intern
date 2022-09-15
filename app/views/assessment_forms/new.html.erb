@@ -10,7 +10,7 @@
 
 <%= form_with url: assessment_forms_path ,methods: :post, local: true  do |form| %>
 
-  <%= form.hidden_field :branch_id, value: 1 %>
+  <%= form.hidden_field :ieul_branch_id, value: @ieul_branch_id %>
 
   <div class="row mb-2">
     <div class="col-2">

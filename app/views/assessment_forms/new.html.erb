@@ -29,11 +29,7 @@
       <label for="city_id" class="col-form-label">市区町村 (必須)</label>
     </div>
     <div class="col-7">
-      <select class="form-select" aria-label="city_select" name="city_id">
-        <option disabled selected value>市区町村を選択してください</option>
-        <option value=1>札幌市</option>
-        <option value=2>苫小牧</option>
-      </select>
+      <%= form.collection_select :city_id, City.all, :id, :name, { prompt: "市区町村を選択してください" }, { id: 'city', class: 'form-select' } %>
       <% @assessment_form.errors.full_messages_for(:city_id).each do |message| %>
          <%= message unless message.include?('is not a number') %>
       <% end %>
@@ -255,7 +251,13 @@
     prefecture.change(() => {
       const prefectureID = prefecture.val();
       fetchCitiesByPrefectureID(prefectureID).then((res) => {
-        console.log(res)
+        $('#city').children().remove().end()
+        res.map((city) => {
+          $('#city').append($('<option>', {
+            value: city.id,
+            text: city.name
+          }))
+        })
       })
     });
   }

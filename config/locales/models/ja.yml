@@ -20,3 +20,11 @@ ja:
         first_name_kana: 'めい'
         last_name_kana: 'せい'
         user_tel: '電話番号'
+    errors:
+      models:
+        assessment_form:
+          attributes:
+            user_tel:
+              invalid: 'は0から始まる10-11文字で入力してください'
+            user_email:
+              invalid: 'は@や.を含む、有効なものを入力してください'

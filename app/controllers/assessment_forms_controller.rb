@@ -21,7 +21,6 @@ class AssessmentFormsController < ApplicationController
   def assessment_form_params
     params.require(:assessment_form).permit(
       :branch_id,
-      :prefecture_id,
       :city_id,
       :property_type,
       :property_exclusive_area,

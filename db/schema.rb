@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_15_053329) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_16_052442) do
   create_table "available_areas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "city_id", null: false
     t.bigint "branch_id", null: false
@@ -97,6 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_053329) do
     t.datetime "updated_at", null: false
     t.bigint "branch_id", null: false
     t.integer "contract_price", null: false
+    t.string "review_digest", null: false
     t.index ["branch_id"], name: "index_reviews_on_branch_id"
     t.index ["city_id"], name: "index_reviews_on_city_id"
     t.index ["property_type_id"], name: "index_reviews_on_property_type_id"

@@ -82,15 +82,14 @@ bundle exec rake import_review
 ```
 
 ## docker 内で rspec を実行
-※ ファイル名は下記のように`spec`を最後につける
-```
-example_spec.rb
-```
-
-
 実行コマンド
 ```
 bundle exec rspec example_spec.rb
+```
+
+※ ファイル名は下記のように`spec`を最後につける
+```
+example_spec.rb
 ```
 
 ## サーバへのデプロイ

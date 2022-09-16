@@ -35,7 +35,8 @@ class AssessmentForm
     end
 
     validates :property_address
-    validates :user_email, length: { maximum: 100 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+    validates :user_email, length: { maximum: 100 },
+                           format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
     validates :first_name, length: { maximum: 15 }
     validates :last_name, length: { maximum: 15 }
     validates :first_name_kana, length: { maximum: 31 }

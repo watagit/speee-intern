@@ -35,11 +35,11 @@ class AssessmentForm
     end
 
     validates :property_address
-    validates :user_email, length: { maximum: 100 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+    validates :user_email, length: { maximum: 100 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: 'は@や.を含む、有効なものを入力してください' }
     validates :first_name, length: { maximum: 15 }
     validates :last_name, length: { maximum: 15 }
     validates :first_name_kana, length: { maximum: 31 }
     validates :last_name_kana, length: { maximum: 31 }
-    validates :user_tel, format: { with: /\A0\d{9,10}\z/ }
+    validates :user_tel, format: { with: /\A0\d{9,10}\z/, message: 'は0から始まる10-11文字で入力してください' }
   end
 end

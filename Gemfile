@@ -63,6 +63,11 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rubycw'
+
+  # test
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
 end
 
 group :development do

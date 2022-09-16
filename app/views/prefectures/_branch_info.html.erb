@@ -1,0 +1,6 @@
+<p><%= prefecture_branch.company.name %><%= prefecture_branch.name %></p>
+<p><%= prefecture_branch.business_hours %></p>
+<p><%= prefecture_branch.closed_day %></p>
+<p>★<%= prefecture_branch.average_satisfaction_level %></p>
+<p>住所：<%= prefecture_branch.city.prefecture.name %><%= prefecture_branch.city.name %><%= prefecture_branch.after_address %></p>
+<p>会社の決めて：<%= prefecture_branch.reviews.first.comment_reason_to_decide %></p>

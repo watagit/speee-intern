@@ -19,9 +19,10 @@ class AssessmentFormsController < ApplicationController
   # rubocop:disable  Metrics/*
 
   def assessment_form_params
-    params.permit(
-      :ieul_branch_id,
-      :property_city,
+    params.require(:assessment_form).permit(
+      :branch_id,
+      :prefecture_id,
+      :city_id,
       :property_type,
       :property_exclusive_area,
       :property_land_area,

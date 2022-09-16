@@ -1,0 +1,16 @@
+ja:
+  enumerize:
+    review:
+      brokerage_contract_type:
+        privilegedand_exclusive_brokerage_service_agreement: '専属専任媒介契約'
+        exclusive_brokerage_service_agreement: '専任媒介契約'
+        non_exclusive_brokerage_service_agreement: '一般媒介契約'
+        unknown: 'わからない'
+      reason_for_sale:
+        relocation: '住み替え'
+        inheritance: '相続'
+        transfer: '転勤、転職'
+        divorce: '離婚'
+        assets_management: '資産整理'
+        financial_reasons: '金銭的な理由'
+        other: 'その他'

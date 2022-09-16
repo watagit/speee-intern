@@ -6,7 +6,10 @@ class AssessmentFormsController < ApplicationController
 
   def create
     @assessment_form = AssessmentForm.new(assessment_form_params)
-    if @assessment_form.valid? && post_assessment(assessment_form_params)
+
+    api_params = generate_params(assessment_form_params)
+
+    if @assessment_form.valid? && post_assessment(api_params)
       redirect_to thanks_path
     else
       flash.now[:alert] = '査定情報の送信に失敗しました'
@@ -40,8 +43,8 @@ class AssessmentFormsController < ApplicationController
     )
   end
 
-  def post_assessment(params)
-    api_params = {
+  def generate_params(params)
+    {
       branch_id: params[:ieul_branch_id],
       property_city: params[:property_city],
       property_address: params[:property_address],
@@ -59,8 +62,11 @@ class AssessmentFormsController < ApplicationController
       user_name_kana: "#{params[:last_name_kana]} #{params[:first_name_kana]}",
       user_tel: params[:user_tel]
     }
+  end
+
+  def post_assessment(params)
     uri = URI.parse('https://miniul-api.herokuapp.com/affiliate/v2/conversions')
-    response = Net::HTTP.post_form(uri, api_params)
+    response = Net::HTTP.post_form(uri, params)
 
     response.code == '200'
   end

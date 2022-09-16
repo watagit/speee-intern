@@ -50,9 +50,13 @@ task import_company: :environment do
       )
 
       available_area_city_id_array.each do |city|
-        puts city
         city_object = City.find_by(id: city)
-        AvailableArea.create!(city_id: city_object.id, branch_id: branch.id)
+        if city_object.blank?
+          puts "city id #{city} is blank"
+          next
+        else
+          AvailableArea.create!(city_id: city_object.id, branch_id: branch.id)
+        end
       end
     end
     puts "import company:#{csv_company_name}"

@@ -222,7 +222,10 @@
 <% end %>
 
 <script>
-  window.onload = () => {
+  window.onload = filterCityByPrefecture;
+  $(document).ready(filterCityByPrefecture);
+
+  function filterCityByPrefecture() {
     const prefectureElement = $('#prefecture');
     const cityElement = $('#city');
 
@@ -240,7 +243,7 @@
         });
       });
     });
-  };
+  }
 
   async function fetchCitiesByPrefectureID(id) {
     const response = await fetch(`/api/prefectures/${id}/cities`);

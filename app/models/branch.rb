@@ -6,7 +6,7 @@ class Branch < ApplicationRecord
   has_many :cities, through: :available_areas
 
   validates :ieul_branch_id, uniqueness: true
-  validates :name, uniqueness: { scope: :company_id }
+  validates :name, uniqueness: { scope: %i[company_id ieul_branch_id] }
 
   # 平均評価の算出
   def average_satisfaction_level

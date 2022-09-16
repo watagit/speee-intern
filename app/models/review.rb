@@ -7,6 +7,8 @@ class Review < ApplicationRecord
   belongs_to :city
   belongs_to :property_type
 
+  validates :review_digest, uniqueness: true
+
   enumerize :brokerage_contract_type,
             in: { privilegedand_exclusive_brokerage_service_agreement: 1, exclusive_brokerage_service_agreement: 2,
                   non_exclusive_brokerage_service_agreement: 3, unknown: 4 }

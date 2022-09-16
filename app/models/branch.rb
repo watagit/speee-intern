@@ -5,6 +5,9 @@ class Branch < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :cities, through: :available_areas
 
+  validates :ieul_branch_id, uniqueness: true
+  validates :name, uniqueness: { scope: :company_id }
+
   # 平均評価の算出
   def average_satisfaction_level
     total_rating = 0

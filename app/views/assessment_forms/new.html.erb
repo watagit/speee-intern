@@ -19,7 +19,7 @@
     <div class="col-7">
       <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: "都道府県を選択してください" }, { id: 'prefecture', class: 'form-select' } %>
       <% @assessment_form.errors.full_messages_for(:prefecture_id).each do |message| %>
-        <%= message unless message.include?('is not a number') %>
+        <%= message unless message.include?('数値で入力してください') %>
       <% end %>
     </div>
   </div>
@@ -31,7 +31,7 @@
     <div class="col-7">
       <%= form.collection_select :property_city, City.all, :id, :name, { prompt: "市区町村を選択してください" }, { id: 'city', class: 'form-select' } %>
       <% @assessment_form.errors.full_messages_for(:property_city).each do |message| %>
-        <%= message unless message.include?('is not a number') %>
+        <%= message unless message.include?('数値で入力してください') %>
       <% end %>
     </div>
   </div>
@@ -55,7 +55,7 @@
     <div class="col-7">
       <%= form.select :property_type, [['分譲マンション',1], ['一戸建て', 2], ['土地', 3]], {prompt: '物件種別を選択してください'}, {class: "form-select"} %>
       <% @assessment_form.errors.full_messages_for(:property_type).each do |message| %>
-        <%= message unless message.include?('is not a number') %>
+        <%= message unless message.include?('数値で入力してください') %>
       <% end %>
     </div>
   </div>
@@ -67,7 +67,7 @@
     <div class="col-7">
       <%= form.number_field :property_exclusive_area, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:property_exclusive_area).each do |message| %>
-        <%= message unless message.include?('is not a number') %>
+        <%= message unless message.include?('数値で入力してください') %>
       <% end %>
     </div>
   </div>
@@ -79,7 +79,7 @@
     <div class="col-7">
       <%= form.number_field :property_land_area, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:property_land_area).each do |message| %>
-        <%= message unless message.include?('is not a number') %>
+        <%= message unless message.include?('数値で入力してください') %>
       <% end %>
     </div>
   </div>
@@ -91,7 +91,7 @@
     <div class="col-7">
       <%= form.number_field :property_building_area, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:property_building_area).each do |message| %>
-        <%= message unless message.include?('is not a number') %>
+        <%= message unless message.include?('数値で入力してください') %>
       <% end %>
     </div>
   </div>
@@ -103,7 +103,7 @@
     <div class="col-7">
       <%= form.select :property_building_area_unit, [['平方メートル',1], ['坪', 2]], { prompt: '建物の面積単位を選択してください' }, { class: "form-select" } %>
       <% @assessment_form.errors.full_messages_for(:property_building_area_unit).each do |message| %>
-        <%= message unless message.include?('is not a number') %>
+        <%= message unless message.include?('数値で入力してください') %>
       <% end %>
     </div>
   </div>
@@ -115,7 +115,7 @@
     <div class="col-7">
       <%= form.number_field :property_floor_area, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:property_floor_area).each do |message| %>
-        <%= message unless message.include?('is not a number') %>
+        <%= message unless message.include?('数値で入力してください') %>
       <% end %>
     </div>
   </div>
@@ -127,7 +127,7 @@
     <div class="col-7">
       <%= form.select :property_room_plan, [['1R(ワンルーム)',1], ['1K/1DK', 2], ['1LK/1LDK', 3], ['2K/2DLK', 4], ['2LK / 2LDK', 5], ['3K/3DK', 6], ['3LK/3LDK', 7], ['4K/4DK', 8], ['4LK/4LDK', 9], ['5K/5DK',10], ['5LK/5LDK', 11], ['6K/6DK', 12], ['6LK/6LDK以上', 13]], { prompt: '間取りを選択してください' }, { class: "form-select" } %>
       <% @assessment_form.errors.full_messages_for(:property_room_plan).each do |message| %>
-        <%= message unless message.include?('is not a number') %>
+        <%= message unless message.include?('数値で入力してください') %>
       <% end %>
     </div>
   </div>
@@ -139,7 +139,7 @@
     <div class="col-7">
       <%= form.number_field :property_constructed_year, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:property_constructed_year).each do |message| %>
-        <%= message unless message.include?('is not a number') %>
+        <%= message unless message.include?('数値で入力してください') %>
       <% end %>
     </div>
   </div>
@@ -151,7 +151,7 @@
     <div class="col-7">
       <%= form.email_field :user_email, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:user_email).each do |message| %>
-        <%= message %>
+        <%= message unless message.include?('メールアドレスを入力してください') %>
       <% end %>
     </div>
   </div>
@@ -211,7 +211,7 @@
     <div class="col-7">
       <%= form.text_field :user_tel, class: "form-control" %>
       <% @assessment_form.errors.full_messages_for(:user_tel).each do |message| %>
-        <%= message %>
+        <%= message unless message.include?('電話番号を入力してください') %>
       <% end %>
     </div>
   </div>

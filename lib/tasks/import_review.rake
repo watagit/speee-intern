@@ -39,7 +39,7 @@ task import_review: :environment do
 
       row_h = row.to_h
       string_hash = Digest::MD5.hexdigest(row_h.values.join)
-      review = Review.find_or_create_by!(review_digest: string_hash) do |review|
+      Review.find_or_create_by!(review_digest: string_hash) do |review|
         review.name = user_name
         review.gender = gender
         review.age = age
@@ -73,6 +73,7 @@ task import_review: :environment do
 rescue StandardError => e
   logger.error e.message
   logger.error e.backtrace.join("\n")
+
 ensure
   puts '口コミデータのインポートが完了したよ！！！！'
 end

@@ -18,4 +18,16 @@ module ReviewsHelper
     diff_months = (date_after - date_before).numerator / 30
     "売出しから#{diff_months}か月"
   end
+
+  # 平均評価の算出
+  def average_satisfaction_level(reviews)
+    total_rating = 0
+
+    reviews.each do |review|
+      total_rating += review.satisfaction_level
+    end
+
+    # TODO: 小数点第2位以下は切り捨てで良いかりょうさんに確認
+    (Float(total_rating) / reviews.count).round(2)
+  end
 end

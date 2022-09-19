@@ -18,7 +18,7 @@
   <% end %>
 </div>
 
-<%= render 'company_info' %>
+<%= render 'company_info', branch: @branch %>
 
 <div class="text-center mb-5">
   <%= link_to "査定依頼をする", new_assessment_form_path(ieul_branch_id: @branch.ieul_branch_id), class: 'btn btn-secondary w-25' %>

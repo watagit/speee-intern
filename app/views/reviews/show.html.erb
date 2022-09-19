@@ -40,13 +40,13 @@
   <h2>売却時期と価格について</h2>
   <p>売却検討</p><%= format_date(@review.considering_selling_at) %>
   <p>----------</p>
-  <p>査定依頼</p><%= format_date(@review.assessment_requested_at) %><p>査定価格</p><%= format_price(@review.assessment_price) %><p>万円</p>
+  <p>査定依頼</p><%= format_date(@review.assessment_requested_at) %><p>査定価格</p><%= format_price(@review.assessment_price) %>
   <p>----------</p>
-  <p>売出し</p><%= format_date(@review.sales_started_at) %><p>売出し価格</p><%= format_price(@review.sold_price) %><p>万円</p>
+  <p>売出し</p><%= format_date(@review.sales_started_at) %><p>売出し価格</p><%= format_price(@review.sold_price) %>
   <p>----------</p>
   <p>売却</p><%= format_date(@review.sold_at) %>
   <%= cal_sale_time(@review.sales_started_at, @review.sold_at) %>
-  <p>売却価格</p><%= format_price(@review.contract_price) %><p>万円</p>
+  <p>売却価格</p><%= format_price(@review.contract_price) %>
   <p>----------</p>
   <p>引き渡し</p><%= format_date(@review.delivered_at) %>
 </div>

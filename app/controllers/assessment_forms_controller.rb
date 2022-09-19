@@ -12,6 +12,7 @@ class AssessmentFormsController < ApplicationController
     if @assessment_form.valid? && post_assessment(api_params)
       redirect_to thanks_path
     else
+      @ieul_branch_id = params[:assessment_form][:ieul_branch_id]
       flash.now[:alert] = '査定情報の送信に失敗しました'
       render action: :new, status: :unprocessable_entity
     end

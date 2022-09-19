@@ -45,7 +45,7 @@
   <p>売出し</p><%= format_date(@review.sales_started_at) %><p>売出し価格</p><%= format_price(@review.sold_price) %>
   <p>----------</p>
   <p>売却</p><%= format_date(@review.sold_at) %>
-  <%= cal_sale_time(@review.sales_started_at, @review.sold_at) %>
+  <%= months_after_the_sale(@review.sales_started_at, @review.sold_at) %>
   <p>売却価格</p><%= format_price(@review.contract_price) %>
   <p>----------</p>
   <p>引き渡し</p><%= format_date(@review.delivered_at) %>

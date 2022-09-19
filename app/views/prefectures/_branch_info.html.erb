@@ -8,7 +8,7 @@
 </div>
 <div class="row">
   <div class="col">
-    <p>★<%= prefecture_branch.average_satisfaction_level %></p>
+    <p>★<%= average_satisfaction_level(prefecture_branch.reviews) %></p>
   </div>
   <div class="col-9">
     <p><%= prefecture_branch.closed_day %></p>

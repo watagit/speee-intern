@@ -1,5 +1,5 @@
 <div class="mb-5">
   <% @prefectures.each do |prefecture| %>
-    <%= link_to(prefecture.name, "#") %>
+    <%= link_to prefecture.name, prefecture_path(prefecture) %>
   <% end %>
 </div>

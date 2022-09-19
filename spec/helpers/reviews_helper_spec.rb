@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe ReviewsHelper, type: :helper do
   describe '#format_price' do
     it '10,000を渡すと1万円が返る' do
@@ -24,10 +25,23 @@ RSpec.describe ReviewsHelper, type: :helper do
   end
 
   describe '#months_after_the_sale' do
-    it '2022-03-15と2022-03-16を渡すと"売出しから約0か月"が返る' do; end
-    it '2022-03-15と2022-04-14を渡すと"売出しから約1か月"が返る' do; end
-    it '2022-03-15と2022-04-15を渡すと"売出しから約1か月"が返る' do; end
-    it '2022-03-15と2022-05-01を渡すと"売出しから約2か月"が返る' do; end
-    it '2022-03-15と2023-03-15を渡すと"売出しから約1年0か月"が返る' do; end
+    it '2022-03-15と2022-04-14を渡すと"売出しから約0か月"が返る' do
+      date_before = Time.zone.parse('2022-03-15')
+      date_after = Time.zone.parse('2022-04-14')
+      expect(helper.months_after_the_sale(date_before, date_after)).to eq '売出しから約0か月'
+    end
+
+    it '2022-03-15と2022-04-15を渡すと"売出しから約1か月"が返る' do
+      date_before = Time.zone.parse('2022-03-15')
+      date_after = Time.zone.parse('2022-04-15')
+      expect(helper.months_after_the_sale(date_before, date_after)).to eq '売出しから約1か月'
+    end
+
+    it '2022-03-15と2022-05-14を渡すと"売出しから約1か月"が返る' do
+      date_before = Time.zone.parse('2022-03-15')
+      date_after = Time.zone.parse('2022-05-14')
+      expect(helper.months_after_the_sale(date_before, date_after)).to eq '売出しから約1か月'
+    end
   end
 end
+# rubocop:enable Metrics/BlockLength

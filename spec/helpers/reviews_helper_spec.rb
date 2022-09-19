@@ -22,4 +22,10 @@ RSpec.describe ReviewsHelper, type: :helper do
       expect(helper.format_date(date)).to eq '2022年11月'
     end
   end
+
+  describe '#months_after_the_sale' do
+    it '2022-03-15と2022-04-14を渡すと"売出しから0か月"が返る' do; end
+    it '2022-03-15と2022-04-15を渡すと"売出しから1か月"が返る' do; end
+    it '2022-03-15と2022-05-14を渡すと"売出しから1か月"が返る' do; end
+  end
 end

@@ -1,1 +1,55 @@
-<p>reivew detail</p>
+<h1>スムーズな取引ができました</h1>
+
+<div>
+<p>売却した不動産会社名：<%= @review.branch.company.name %></p>
+<p>住所：<%= @review.city.prefecture.name %><%= @review.city.name %></p>
+<p>売却の理由：<%= @review.reason_for_sale_text %></p>
+<p>売却の経験：<%= @review.sell_count %></p>
+</div>
+
+<div>
+  <h3>売却時に不安だったこと</h3>
+  <%= @review.comment_anxiety %>
+</div>
+
+<div>
+  <h3>この会社に決めた決め手</h3>
+  <%= @review.comment_reason_to_decide %>
+</div>
+
+<div>
+  <h3>不動産会社の対応満足度：★<%= @review.satisfaction_level %></h3>
+  <%= @review.comment_reason_for_satisfaction %>
+</div>
+
+<div>
+  <h3>今後売却する人へのアドバイス</h3>
+  <%= @review.advice %>
+</div>
+
+<div>
+  <h3>不動産会社に改善してほしい点</h3>
+  <% if @review.comment_improvement.blank? %>
+    <p>特になし</p>
+  <% else %>
+    <%= @review.comment_improvement %>
+  <% end %>
+</div>
+
+<div>
+  <h2>売却時期と価格について</h2>
+  <p>売却検討</p><%= format_date(@review.considering_selling_at) %>
+  <p>----------</p>
+  <p>査定依頼</p><%= format_date(@review.assessment_requested_at) %><p>査定価格</p><%= format_price(@review.assessment_price) %><p>万円</p>
+  <p>----------</p>
+  <p>売出し</p><%= format_date(@review.sales_started_at) %><p>売出し価格</p><%= format_price(@review.sold_price) %><p>万円</p>
+  <p>----------</p>
+  <p>売却</p><%= format_date(@review.sold_at) %>
+  <%= cal_sale_time(@review.sales_started_at, @review.sold_at) %>
+  <p>売却価格</p><%= format_price(@review.contract_price) %><p>万円</p>
+  <p>----------</p>
+  <p>引き渡し</p><%= format_date(@review.delivered_at) %>
+</div>
+
+<p>----------</p>
+<%= render 'branches/company_info', branch: @review.branch %>

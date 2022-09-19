@@ -6,7 +6,7 @@
     <p>査定可能な企業がありません</p>
   <% else %>
     <% @prefecture.cities.each do |city| %>
-      <%= link_to(city.name, "#") %>
+      <%= link_to city.name, city_path(city) %>
     <% end %>
   <% end %>
 </div>
@@ -16,7 +16,7 @@
     <%= link_to(branch, class: 'text-decoration-none text-body') do %>
       <div class="card mb-2">
         <div class="card-body">
-          <%= render 'branch_info', prefecture_branch: branch %>
+          <%= render 'layouts/branch_info', branch: branch %>
         </div>
       </div>
     <% end %>

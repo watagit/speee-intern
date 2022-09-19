@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :reviews, only: :show
   resources :assessment_forms, only: %i[new create]
   resources :prefectures, only: :show
+  resources :cities, only: :show
 
   get '/api/prefectures/:id/cities', to: 'prefectures#city'
 end

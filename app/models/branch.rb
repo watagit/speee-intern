@@ -15,7 +15,7 @@ class Branch < ApplicationRecord
     reviews.each do |review|
       total_rating += review.satisfaction_level
     end
-
+    
     # TODO: 小数点第2位以下は切り捨てで良いかりょうさんに確認
     (Float(total_rating) / reviews.count).round(2)
   end

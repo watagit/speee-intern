@@ -14,8 +14,8 @@ module ReviewsHelper
 
   # 日付間の期間の計算
   # 例) 2018年3月と2019年1月 => 10か月
-  def cal_sale_time(data_before, data_after)
-    diff_months = (data_after - data_before).numerator / 30
+  def months_after_the_sale(date_before, date_after)
+    diff_months = (date_after - date_before).numerator / 30
     "売出しから#{diff_months}か月"
   end
 end

@@ -25,7 +25,7 @@
     <p>会社の決めて：</p>
   </div>
   <div class="col-9">
-    <% if prefecture_branch.reviews.empty? %>
+    <% if prefecture_branch.reviews.blank? %>
       <p>口コミがありません</p>
     <% else %>
       <p><%= prefecture_branch.reviews.first.comment_reason_to_decide %></p>

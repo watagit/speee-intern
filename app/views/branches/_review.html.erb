@@ -1,6 +1,6 @@
 <p class="fw-bold"><%= review.name %>：★<%= review.satisfaction_level %></p>
 <p><%= review.comment_reason_for_satisfaction %></p>
 <div>
-  <p>成約価格<%= format_price(review.sold_price) %></p>
+  <p>成約価格<%= format_price(review.contract_price) %></p>
   <p>(<%= review.city.prefecture.name %><%= review.city.name %> <%= format_date(review.sold_at) %>に売却)</p>
 </div>

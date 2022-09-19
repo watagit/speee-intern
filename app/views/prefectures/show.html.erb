@@ -2,7 +2,7 @@
 
 <div class="mb-5">
   <h2><%= @prefecture.name %>全域</h2>
-  <% if @prefecture.cities == [] then %>
+  <% if @prefecture.cities.empty? %>
     <p>査定可能な企業がありません</p>
   <% else %>
     <% @prefecture.cities.each do |city| %>

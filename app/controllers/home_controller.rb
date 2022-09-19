@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  def show; 
+  def show
     @prefectures = Prefecture.all
   end
 end

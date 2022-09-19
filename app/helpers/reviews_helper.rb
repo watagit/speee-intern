@@ -11,4 +11,11 @@ module ReviewsHelper
   def format_date(date)
     date.strftime('%Y年%-m月')
   end
+
+  # 日付間の期間の計算
+  # 例) 2018年3月と2019年1月 => 10か月
+  def months_after_the_sale(date_before, date_after)
+    diff_months = (date_after - date_before).numerator / 30
+    "売出しから#{diff_months}か月"
+  end
 end

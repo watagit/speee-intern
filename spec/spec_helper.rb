@@ -13,6 +13,9 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+require 'database_cleaner/active_record'
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -89,4 +92,22 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+
+  # テスト全体の前に実行する処理をブロックで記述
+  config.before(:suite) do
+    # データベースをCleanする方法を'transaction'に指定
+    DatabaseCleaner.strategy = :transaction
+    # このタイミングで'transaction'でデータベースをCleanしておく
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  # 各exampleの前および後に実行する処理をブロックで記述
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      # ここに処理を記述する
+      # ここがexampleの実行タイミング
+      example.run
+      # ここに処理を記述する ##
+    end
+  end
 end

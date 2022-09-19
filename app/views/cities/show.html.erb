@@ -1,0 +1,17 @@
+<h1 class="text-center mb-5"><%= @prefecture.name %> <%= @city.name %>の不動産会社</h1>
+
+<div class="mb-5">
+  <% if @city_branches.blank? %>
+    <p>査定可能な企業がありません</p>
+  <% end %>
+</div>
+
+<div class="mb-5">
+  <% @city_branches.each do |city_branch| %>
+    <div class="card mb-2">
+      <div class="card-body">
+        <%= render 'layouts/branch_info', branch: city_branch %>
+      </div>
+    </div>
+  <% end %>
+</div>

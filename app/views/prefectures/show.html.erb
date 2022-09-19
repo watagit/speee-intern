@@ -12,11 +12,13 @@
 </div>
 
 <div class="mb-5">
-  <% @prefecture_branches.each do |prefecture_branch| %>
-    <div class="card mb-2">
-      <div class="card-body">
-        <%= render 'branch_info', prefecture_branch: prefecture_branch %>
+  <% @prefecture_branches.each do |branch| %>
+    <%= link_to(branch, class: 'text-decoration-none text-body') do %>
+      <div class="card mb-2">
+        <div class="card-body">
+          <%= render 'branch_info', prefecture_branch: branch %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

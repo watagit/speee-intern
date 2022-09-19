@@ -10,11 +10,14 @@
 <div class="mb-5">
   <p class="fw-bold"><%= @branch.company.name %>についての口コミ(平均評価 ★<%= @branch.average_satisfaction_level %>)</p>
   <% @branch.reviews.each do |review| %>
-    <div class="card mb-2">
-      <div class="card-body">
-        <%= render 'review', review: review %>
+
+    <%= link_to(review, class: 'text-decoration-none text-body') do %>
+      <div class="card mb-2">
+        <div class="card-body">
+          <%= render 'review', review: review %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 

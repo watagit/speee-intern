@@ -37,40 +37,43 @@ task import_review: :environment do
       city = City.find_by(name: city_name)
       is_discount = discount.to_i == 1
 
-      Review.create!(
-        name: user_name,
-        gender:,
-        age:,
-        sell_count:,
-        considering_selling_at:,
-        assessment_requested_at:,
-        sales_started_at:,
-        sold_at:,
-        delivered_at:,
-        assessment_price:,
-        sold_price:,
-        is_discount:,
-        discount_date_type_after_sales_started:,
-        discount_price:,
-        brokerage_contract_type:,
-        headline:,
-        reason_for_sale:,
-        comment_anxiety:,
-        comment_reason_to_decide:,
-        satisfaction_level:,
-        comment_reason_for_satisfaction:,
-        advice:,
-        comment_improvement:,
-        property_type_id: property_type.id,
-        city_id: city.id,
-        branch_id:,
-        contract_price:
-      )
+      row_h = row.to_h
+      string_hash = Digest::MD5.hexdigest(row_h.values.join)
+      Review.find_or_create_by!(review_digest: string_hash) do |review|
+        review.name = user_name
+        review.gender = gender
+        review.age = age
+        review.sell_count = sell_count
+        review.considering_selling_at = considering_selling_at
+        review.assessment_requested_at = assessment_requested_at
+        review.sales_started_at = sales_started_at
+        review.sold_at = sold_at
+        review.delivered_at = delivered_at
+        review.assessment_price = assessment_price
+        review.sold_price = sold_price
+        review.is_discount = is_discount
+        review.discount_date_type_after_sales_started = discount_date_type_after_sales_started
+        review.discount_price = discount_price
+        review.brokerage_contract_type = brokerage_contract_type
+        review.headline = headline
+        review.reason_for_sale = reason_for_sale
+        review.comment_anxiety = comment_anxiety
+        review.comment_reason_to_decide = comment_reason_to_decide
+        review.satisfaction_level = satisfaction_level
+        review.comment_reason_for_satisfaction = comment_reason_for_satisfaction
+        review.advice = advice
+        review.comment_improvement = comment_improvement
+        review.property_type_id = property_type.id
+        review.city_id = city.id
+        review.branch_id = branch_id
+        review.contract_price = contract_price
+      end
     end
   end
 rescue StandardError => e
   logger.error e.message
   logger.error e.backtrace.join("\n")
+
 ensure
   puts '口コミデータのインポートが完了したよ！！！！'
 end

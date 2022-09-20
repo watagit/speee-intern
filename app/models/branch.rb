@@ -7,4 +7,15 @@ class Branch < ApplicationRecord
 
   validates :ieul_branch_id, uniqueness: true
   validates :name, uniqueness: { scope: %i[company_id ieul_branch_id] }
+
+  # 平均評価の算出
+  def average_satisfaction_level
+    total_rating = 0
+
+    reviews.each do |review|
+      total_rating += review[:satisfaction_level]
+    end
+
+    (Float(total_rating) / reviews.size).round(1)
+  end
 end

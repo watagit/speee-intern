@@ -16,7 +16,7 @@ class AssessmentFormsController < ApplicationController
       if available_area_ids.include?(@assessment_form.property_city)
         post_assessment(api_params)
         redirect_to thanks_path
-      elsif 0 < @city.available_areas.size
+      elsif @city.available_areas.size.positive?
         flash[:alert] = '査定依頼ができませんでした。あなたの指定したエリアはこれらの不動産会社が対応可能です。'
       else
         flash[:alert] = '査定依頼ができませんでした。申し訳ございません。あなたの指定したエリアを査定できる不動産会社が見つかりませんでした。'

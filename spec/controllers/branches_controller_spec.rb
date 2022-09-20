@@ -6,9 +6,5 @@ RSpec.describe 'Branches', type: :request do
       get branch_path branch
       expect(response).to have_http_status(:success)
     end
-
-    it 'branchがない場合500が返る' do
-      # TODO: controller側で404を返すようになってから実装する
-    end
   end
 end

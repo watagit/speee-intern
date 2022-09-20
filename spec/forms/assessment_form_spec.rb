@@ -1,7 +1,7 @@
 require 'rails_helper'
-RSpec.describe AssessmentForm, type: :model do
-  describe 'バリデーションのチェック' do
-    context '最大文字数を超える字数を入力した場合' do
+RSpec.describe AssessmentForm, type: :model do # rubocop:disable Metrics/BlockLength
+  describe 'バリデーションのチェック' do # rubocop:disable Metrics/BlockLength
+    context '最大文字数を超える字数を入力した場合' do # rubocop:disable Metrics/BlockLength
       let(:assessment_form) do
         FactoryBot.build(:assessment_form,
                          user_email: "#{'a' * 100}@example.com",
@@ -35,7 +35,7 @@ RSpec.describe AssessmentForm, type: :model do
       end
     end
 
-    context '必須入力項目に入力がない場合' do
+    context '必須入力項目に入力がない場合' do # rubocop:disable Metrics/BlockLength
       before do
         @assessment_form = AssessmentForm.new
         @assessment_form.valid?
@@ -82,7 +82,7 @@ RSpec.describe AssessmentForm, type: :model do
       end
     end
 
-    context '正規表現に反する入力が行われた場合' do
+    context '正規表現に反する入力が行われた場合' do # rubocop:disable Metrics/BlockLength
       context '電話番号に0から始まらない入力がされた場合' do
         let(:assessment_form) { FactoryBot.build(:assessment_form, user_tel: '19028481645') }
         it '電話番号の項目でバリデーションエラーが発生する' do

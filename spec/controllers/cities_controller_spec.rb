@@ -3,10 +3,12 @@ require 'rails_helper'
 RSpec.describe 'Cities', type: :request do
   describe 'action test' do
     let!(:prefecture) { FactoryBot.create(:prefecture) }
-    let!(:city) { FactoryBot.create(
-      :city,
-      prefecture_id: Prefecture.first.id
-    )}
+    let!(:city) do
+      FactoryBot.create(
+        :city,
+        prefecture_id: Prefecture.first.id
+      )
+    end
 
     context 'GET /show' do
       context 'when city id is found' do

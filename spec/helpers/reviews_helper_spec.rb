@@ -43,5 +43,29 @@ RSpec.describe ReviewsHelper, type: :helper do
       expect(helper.months_after_the_sale(date_before, date_after)).to eq '売出しから約1か月'
     end
   end
+
+  describe '#average_satisfaction_level' do
+    it '小数点第二位が5以上のときは切り上げ' do
+      # 平均は4.67...
+      reviews = [
+        { satisfaction_level: 4 },
+        { satisfaction_level: 5 },
+        { satisfaction_level: 5 }
+      ]
+
+      expect(average_satisfaction_level(reviews)).to eq 4.7
+    end
+
+    it '小数点第二位が4以下のときは切り捨て' do
+      # 平均は4.33...
+      reviews = [
+        { satisfaction_level: 4 },
+        { satisfaction_level: 4 },
+        { satisfaction_level: 5 }
+      ]
+
+      expect(average_satisfaction_level(reviews)).to eq 4.3
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength

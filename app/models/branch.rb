@@ -16,6 +16,6 @@ class Branch < ApplicationRecord
       total_rating += review[:satisfaction_level]
     end
 
-    (Float(total_rating) / reviews.size).round(1)
+    (Float(total_rating) / reviews.length).round(1)
   end
 end

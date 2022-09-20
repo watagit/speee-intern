@@ -8,9 +8,20 @@ class AssessmentFormsController < ApplicationController
     @assessment_form = AssessmentForm.new(assessment_form_params)
 
     api_params = generate_params(assessment_form_params)
+    @city = City.find_by(id: @assessment_form.property_city)
 
-    if @assessment_form.valid? && post_assessment(api_params)
-      redirect_to thanks_path
+    if @assessment_form.valid?
+      @branch = Branch.find_by(ieul_branch_id: @assessment_form.ieul_branch_id)
+      available_area_ids = @branch.available_areas.pluck(:city_id)
+      if available_area_ids.include?(@assessment_form.property_city)
+        post_assessment(api_params)
+        redirect_to thanks_path
+      elsif 0 < @city.available_areas.size
+        flash[:alert] = '査定依頼ができませんでした。あなたの指定したエリアはこれらの不動産会社が対応可能です。'
+      else
+        flash[:alert] = '査定依頼ができませんでした。申し訳ございません。あなたの指定したエリアを査定できる不動産会社が見つかりませんでした。'
+      end
+      redirect_to @city
     else
       @ieul_branch_id = params[:assessment_form][:ieul_branch_id]
       flash.now[:alert] = '査定情報の送信に失敗しました'

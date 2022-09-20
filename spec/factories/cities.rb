@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :city do
-    name { '港区' }
+    name { Faker::Address.city }
 
     association :prefecture
   end

@@ -33,7 +33,7 @@
 - [ ] [branches/id](http://localhost:3000/branches/135) において、`査定依頼をする`ボタンが表示されている
 - [ ] [branches/id](http://localhost:3000/branches/135) において、`査定依頼をする`ボタンを押すと、[/assessment_forms/new?ieul_branch_id=id](http://localhost:3000/assessment_forms/new?ieul_branch_id=135)に遷移する
 
-- [ ] 口コミが無い店舗のページ、例えば、`branches/14` において、口コミが表示されない
+- [ ] 口コミが無い店舗のページ、例えば、[branches/14](http://localhost:3000/branches/14) において、口コミが表示されない
 
 口コミ詳細ページ
 - [ ] [reviews/id](http://localhost:3000/reviews/133) において、口コミ詳細が表示される

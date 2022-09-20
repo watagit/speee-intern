@@ -3,7 +3,7 @@ class PrefecturesController < ApplicationController
     @prefecture = Prefecture.find(params[:id])
 
     branch_ids = AvailableArea.where(city_id: @prefecture.cities.ids).pluck(:branch_id)
-    @prefecture_branches = Branch.where(id: branch_ids).eager_load(:reviews, :city, :company)
+    @prefecture_branches = Branch.where(id: branch_ids).eager_load(:reviews, :company).includes(city: [:prefecture])
   end
 
   def city

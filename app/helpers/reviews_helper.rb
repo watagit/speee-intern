@@ -11,4 +11,25 @@ module ReviewsHelper
   def format_date(date)
     date.strftime('%Y年%-m月')
   end
+
+  # 日付間の期間の計算
+  # 例) 2018年3月と2019年1月 => 10か月
+  def months_after_the_sale(date_before, date_after)
+    diff_year = date_after.year - date_before.year
+    diff_month = date_after.month - date_before.month
+    adjusted_value = date_after.day >= date_before.day ? 0 : 1
+
+    "売出しから約#{(diff_year * 12) + diff_month - adjusted_value}か月"
+  end
+
+  # 平均評価の算出
+  def average_satisfaction_level(reviews)
+    total_rating = 0
+
+    reviews.each do |review|
+      total_rating += review[:satisfaction_level]
+    end
+
+    (Float(total_rating) / reviews.count).round(1)
+  end
 end

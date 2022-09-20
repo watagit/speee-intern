@@ -1,0 +1,82 @@
+<h1 class="text-center mb-5">
+  <%= @review.headline %>
+</h1>
+
+<div class="mb-5">
+  <p class="mb-0">売却した不動産会社名：<%= @review.branch.company.name %></p>
+  <p class="mb-0">住所：<%= @review.city.prefecture.name %><%= @review.city.name %></p>
+  <p class="mb-0">売却の理由：<%= @review.reason_for_sale_text %></p>
+  <p class="mb-0">売却の経験：今回の売却が<%= @review.sell_count %></p>
+</div>
+
+<div class="mb-5">
+  <h3>売却時に不安だったこと</h3>
+  <%= @review.comment_anxiety %>
+</div>
+
+<div class="mb-5">
+  <h3>この会社に決めた決め手</h3>
+  <%= @review.comment_reason_to_decide %>
+</div>
+
+<div class="mb-5">
+  <h3>不動産会社の対応満足度：★<%= @review.satisfaction_level %></h3>
+  <%= @review.comment_reason_for_satisfaction %>
+</div>
+
+<div class="mb-5">
+  <h3>今後売却する人へのアドバイス</h3>
+  <%= @review.advice %>
+</div>
+
+<div class="mb-5">
+  <h3>不動産会社に改善してほしい点</h3>
+  <% if @review.comment_improvement.blank? %>
+    <p>特になし</p>
+  <% else %>
+    <%= @review.comment_improvement %>
+  <% end %>
+</div>
+
+<table class="table w-50 mb-5">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">時期</th>
+      <th scope="col">価格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">売却検討</th>
+      <td><%= format_date(@review.considering_selling_at) %></td>
+      <td>-----</td>
+    </tr>
+    <tr>
+      <th scope="row">査定依頼</th>
+      <td><%= format_date(@review.assessment_requested_at) %></td>
+      <td><%= format_price(@review.assessment_price) %></td>
+    </tr>
+    <tr>
+      <th scope="row">売出し</th>
+      <td><%= format_date(@review.sales_started_at) %></td>
+      <td><%= format_price(@review.sold_price) %></td>
+    </tr>
+    <tr>
+      <th scope="row">売却</th>
+      <td><%= format_date(@review.sold_at) %><p>(<%= months_after_the_sale(@review.sales_started_at, @review.sold_at) %>)</p></td>
+      <td><%= format_price(@review.contract_price) %></td>
+    </tr>
+    <tr>
+      <th scope="row">引き渡し</th>
+      <td><%= format_date(@review.delivered_at) %></td>
+      <td>-----</td>
+    </tr>
+  </tbody>
+</table>
+
+<%= render 'branches/company_info', branch: @review.branch %>
+
+<div class="text-center mb-5">
+  <%= link_to "査定依頼をする", new_assessment_form_path(ieul_branch_id:@review.branch.ieul_branch_id), class: 'btn btn-secondary w-25' %>
+</div>

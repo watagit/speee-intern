@@ -77,6 +77,6 @@
 
 <%= render 'branches/company_info', branch: @review.branch %>
 
-<div class="text-center mb-5">
+<div class="fixed-bottom bg-light text-center p-4">
   <%= link_to "査定依頼をする", new_assessment_form_path(ieul_branch_id:@review.branch.ieul_branch_id), class: 'btn btn-secondary w-25' %>
 </div>

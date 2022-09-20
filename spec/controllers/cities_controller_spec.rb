@@ -10,7 +10,7 @@ RSpec.describe 'Cities', type: :request do
 
     context 'GET /show' do
       context 'when city id is found' do
-        it 'should return 200' do
+        it 'cities/:id アクセス時 id が存在する場合 http status code 200 が返ってくる' do
           get city_path city.id
           expect(response).to have_http_status(200)
         end

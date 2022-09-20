@@ -24,10 +24,8 @@ FactoryBot.define do
     advice { Faker::Lorem.sentence(word_count: 10) }
     contract_price { Faker::Number.between(from: 10_000_000, to: 500_000) }
     review_digest { Faker::Lorem.sentence(word_count: 1) }
-    # reason_for_sale { 5 }
 
     association :property_type
-    # association :city
     association :branch
     city { branch.city }
   end

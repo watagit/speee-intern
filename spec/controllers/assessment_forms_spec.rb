@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'AssessmentForms', type: :request do
   describe 'GET /new' do
     it 'リクエストに成功する' do
@@ -9,7 +10,7 @@ RSpec.describe 'AssessmentForms', type: :request do
   describe 'POST /new' do
     let(:assessment_form_params) do
       {
-        ieul_branch_id:  Faker::Number.between(from: 0, to: 1024),
+        ieul_branch_id: Faker::Number.between(from: 0, to: 1024),
         property_city: Faker::Number.between(from: 0, to: 1899),
         property_type: Faker::Number.between(from: 1, to: 3),
         property_exclusive_area: Faker::Number.between(from: 0, to: 1000),
@@ -25,14 +26,15 @@ RSpec.describe 'AssessmentForms', type: :request do
         last_name: Faker::Name.last_name,
         first_name_kana: 'にかこ',
         last_name_kana: 'せんだい',
-        user_tel: '0000000000',
+        user_tel: '0000000000'
       }
     end
 
-    it 'リクエストに成功' do
+    it 'リクエストに成功するとthanks画面に遷移する' do
       post assessment_forms_path, params: { assessment_form: assessment_form_params }
-      expect(response).to have_http_status(:success)
+      is_expected.to redirect_to thanks_path
     end
     it 'リクエストに失敗' do; end
   end
 end
+# rubocop:enable Metrics/BlockLength

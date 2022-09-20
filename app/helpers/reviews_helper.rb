@@ -27,10 +27,9 @@ module ReviewsHelper
     total_rating = 0
 
     reviews.each do |review|
-      total_rating += review.satisfaction_level
+      total_rating += review[:satisfaction_level]
     end
 
-    # TODO: 小数点第2位以下は切り捨てで良いかりょうさんに確認
-    (Float(total_rating) / reviews.count).round(2)
+    (Float(total_rating) / reviews.count).round(1)
   end
 end

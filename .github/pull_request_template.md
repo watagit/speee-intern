@@ -12,15 +12,15 @@
 
 トップページ
 - [ ] `/` に都道府県の一覧が表示されている
-- [ ] `/` において、都道府県名を選択した時に `/prefecture/:id` に遷移する
+- [ ] `/` において、都道府県名を選択した時に [/prefecture/:id](http://localhost:3000/prefectures/2) に遷移する
 
 都道府県ページ
-- [ ] `/prefectures/id` において、市区町村のリンクが表示されている
-- [ ] `/prefectures/id` において、市区町村を選択した場合、`/cities/:id` に遷移する
-- [ ] `/prefectures/id` に店舗一覧が表示される
-- [ ] `/prefectures/id` において、店舗カードを押すと、`/branches/:id` に遷移する
+- [ ] [/prefecture/:id](http://localhost:3000/prefectures/2) において、市区町村のリンクが表示されている
+- [ ] [/prefecture/:id](http://localhost:3000/prefectures/2) において、市区町村を選択した場合、`/cities/:id` に遷移する
+- [ ] [/prefecture/:id](http://localhost:3000/prefectures/2) に店舗一覧が表示される
+- [ ] [/prefecture/:id](http://localhost:3000/prefectures/2) において、店舗カードを押すと、`/branches/:id` に遷移する
 
-- [ ] 査定可能な企業がない場合、例えば、`/prefectures/1` において、`査定可能な企業がありません`と表示される
+- [ ] 査定可能な企業がない場合、例えば、北海道[/prefecture/:id](http://localhost:3000/prefectures/1) において、`査定可能な企業がありません`と表示される
 
 市区町村ページ
 - [ ] `/cities/id` において、店舗一覧が表示される

@@ -7,19 +7,25 @@
   <p><%= @branch.introduction %></p>
 </div>
 
-<div class="mb-5">
-  <p class="fw-bold"><%= @branch.company.name %>についての口コミ(平均評価 ★<%= average_satisfaction_level(@branch.reviews) %>)</p>
-  <% @branch.reviews.each do |review| %>
-
-    <%= link_to(review, class: 'text-decoration-none text-body') do %>
-      <div class="card mb-2">
-        <div class="card-body">
-          <%= render 'review', review: review %>
-        </div>
-      </div>
-    <% end %>
+  <% if @branch.reviews.blank? %>
+    <div class="mb-5">
+      <p class="fw-bold"><%= @branch.company.name %>についての口コミ</p>
+      <p>口コミがありません</p>
+    </div>
+  <% else %>
+    <div class="mb-5">
+      <p class="fw-bold"><%= @branch.company.name %>についての口コミ(平均評価 ★<%= average_satisfaction_level(@branch.reviews) %>)</p>
+      <% @branch.reviews.each do |review| %>
+        <%= link_to(review, class: 'text-decoration-none text-body') do %>
+          <div class="card mb-2">
+            <div class="card-body">
+              <%= render 'review', review: review %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
-</div>
 
 <%= render 'company_info', branch: @branch %>
 

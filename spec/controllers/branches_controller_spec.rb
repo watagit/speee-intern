@@ -1,6 +1,4 @@
 RSpec.describe 'Branches', type: :request do
-  let(:branch) { Branch.first }
-
   describe 'GET /branches/:id' do
     let(:branch) { FactoryBot.create(:branch) }
 

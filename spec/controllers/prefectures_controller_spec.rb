@@ -12,7 +12,7 @@ RSpec.describe 'Prefectures', type: :request do
     end
 
     context 'GET /api/prefectures/id/cities' do
-      let(:city) { FactoryBot.create(:city, prefecture_id: prefecture.id) }
+      let(:city) { FactoryBot.create(:city) }
 
       it 'should return 200' do
         get prefecture_path prefecture.id

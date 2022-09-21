@@ -143,7 +143,7 @@
       <%= form.label :property_type, '物件種別 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.select :property_type, [['分譲マンション',1], ['一戸建て', 2], ['土地', 3]], {prompt: '物件種別を選択してください'}, {id: "property", class: "form-select" } %>
+      <%= form.select :property_type, [['分譲マンション',1], ['一戸建て', 2], ['土地', 3]], {prompt: '物件種別を選択してください'}, {id: "property_id", class: "form-select" } %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_type).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -171,7 +171,7 @@
       <%= form.label :property_exclusive_area, '専有面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_exclusive_area, class: "form-control", value: 0, disabled: true %>
+      <%= form.number_field :property_exclusive_area, id: "property_exclusive_area_id", class: "form-control", value: 0, disabled: true %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_exclusive_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -262,15 +262,25 @@
   }
 
   $(document).ready(function(){
-    filterCityByPrefecture;
-    selectPropertyType;
+    filterCityByPrefecture();
+    selectPropertyType();
   })
 
   function selectPropertyType(){
     // 物件種別の変更の検知
-    const propertyType = $('#property');
+    const propertyType = $('#property_id');
+    const propertyExclusiveAreaElement = $('#property_exclusive_area_id')
+
     propertyType.change(() => {
-      console.log("change!")
+      const propertyValue = propertyType.val()
+      console.log(propertyValue)
+
+      if (propertyValue === '1') {
+        propertyExclusiveAreaElement.prop('disabled', false);
+      }
+      else {
+        propertyExclusiveAreaElement.prop('disabled', true);
+      }
     })
   }
 

@@ -73,7 +73,7 @@
       <%= form.label :property_exclusive_area, '専有面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_exclusive_area, class: "form-control" %>
+      <%= form.number_field :property_exclusive_area, class: "form-control", value: 0 %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_exclusive_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -87,7 +87,7 @@
       <%= form.label :property_land_area, '土地面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_land_area, class: "form-control" %>
+      <%= form.number_field :property_land_area, class: "form-control", value: 0 %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_land_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -101,7 +101,7 @@
       <%= form.label :property_building_area, '建物面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_building_area, class: "form-control" %>
+      <%= form.number_field :property_building_area, class: "form-control", value: 0 %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_building_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -129,7 +129,7 @@
       <%= form.label :property_floor_area, '延床面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_floor_area, class: "form-control" %>
+      <%= form.number_field :property_floor_area, class: "form-control", value: 0 %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_floor_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>

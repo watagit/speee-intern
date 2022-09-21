@@ -5,7 +5,7 @@
 <div class='mb-3'>
   <%= link_to 'Home', root_path , class: 'inline text-decoration-none text-secondary' %>
   <span class='px-3'>></span>
-  <%= link_to "#{@review.branch.city.prefecture.name}", prefecture_path(@review.branch.city.prefecture) , class: 'inline text-decoration-none text-secondary'%>
+  <%= link_to "#{@review.branch.city.prefecture.name}", prefecture_path(@review.branch.city.prefecture) , class: 'inline text-decoration-none text-secondary' %>
   <span class='px-3'>></span>
   <%= link_to "#{@review.branch.city.name}", @review.branch.city, class: 'inline text-decoration-none text-secondary' %>
   <span class='px-3'>></span>

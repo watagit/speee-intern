@@ -21,15 +21,4 @@ module ReviewsHelper
 
     "売出しから約#{(diff_year * 12) + diff_month - adjusted_value}か月"
   end
-
-  # 平均評価の算出
-  def average_satisfaction_level(reviews)
-    total_rating = 0
-
-    reviews.each do |review|
-      total_rating += review[:satisfaction_level]
-    end
-
-    (Float(total_rating) / reviews.count).round(1)
-  end
 end

@@ -13,15 +13,16 @@ class AssessmentFormsController < ApplicationController
     if @assessment_form.valid?
       @branch = Branch.find_by(ieul_branch_id: @assessment_form.ieul_branch_id)
       available_area_ids = @branch.available_areas.pluck(:city_id)
-      if available_area_ids.include?(@assessment_form.property_city)
+      if available_area_ids.include?(@assessment_form.property_city.to_i)
         post_assessment(api_params)
         redirect_to thanks_path
       elsif @city.available_areas.size.positive?
         flash[:alert] = t 'assessment_forms.flash.cannot_assess'
+        redirect_to @city
       else
         flash[:alert] = t 'assessment_forms.flash.not_found'
+        redirect_to @city
       end
-      redirect_to @city
     else
       @ieul_branch_id = params[:assessment_form][:ieul_branch_id]
       flash.now[:alert] = t 'assessment_forms.flash.failed_to_send'

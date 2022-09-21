@@ -1,38 +1,40 @@
-<div class="row">
-  <div class="col">
-    <p><%= branch.company.name %><%= branch.name %></p>
-  </div>
-  <div class="col-9">
-    <p><%= branch.business_hours %></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <% if branch.average_satisfaction_level == 0 %>
-      <p>口コミがありません</p>
-    <% else %>
-      <p>★<%= branch.average_satisfaction_level %></p>
-    <% end %>
-  </div>
-  <div class="col-9">
-    <p><%= branch.closed_day %></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col"></div>
-  <div class="col-9">
-    <p>住所：<%= branch.city.prefecture.name %><%= branch.city.name %><%= branch.after_address %></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <p>決め手：</p>
-  </div>
-  <div class="col-9">
-    <% if branch.reviews.blank? %>
-      <p>口コミがありません</p>
-    <% else %>
-      <p><%= branch.reviews.first.comment_reason_to_decide %></p>
-    <% end %>
-  </div>
-</div>
+  <%= link_to(branch, class: 'text-decoration-none text-body') do %>
+    <div class="card mb-2">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <p><%= branch.company.name %><%= branch.name %></p>
+          </div>
+          <div class="col-9">
+            <p><%= branch.business_hours %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>★<%= branch.average_satisfaction_level %></p>
+          </div>
+          <div class="col-9">
+            <p><%= branch.closed_day %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col-9">
+            <p>住所：<%= branch.city.prefecture.name %><%= branch.city.name %><%= branch.after_address %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>決め手：</p>
+          </div>
+          <div class="col-9">
+            <% if branch.reviews.blank? %>
+              <p>口コミがありません</p>
+            <% else %>
+              <p><%= branch.reviews.first.comment_reason_to_decide %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>

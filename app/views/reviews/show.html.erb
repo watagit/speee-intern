@@ -9,74 +9,86 @@
   <p class="mb-0">売却の経験：今回の売却が<%= @review.sell_count %></p>
 </div>
 
-<div class="mb-5">
-  <h3>売却時に不安だったこと</h3>
-  <%= @review.comment_anxiety %>
+<div class="card p-3 mb-3 shadow-sm">
+  <div class="card-body">
+    <h3>売却時に不安だったこと</h3>
+    <%= @review.comment_anxiety %>
+  </div>
 </div>
 
-<div class="mb-5">
-  <h3>この会社に決めた決め手</h3>
-  <%= @review.comment_reason_to_decide %>
+<div class="card p-3 mb-3 shadow-sm">
+  <div class="card-body">
+    <h3>この会社に決めた決め手</h3>
+    <%= @review.comment_reason_to_decide %>
+  </div>
 </div>
 
-<div class="mb-5">
-  <h3>不動産会社の対応満足度：★<%= @review.satisfaction_level %></h3>
-  <%= @review.comment_reason_for_satisfaction %>
+<div class="card p-3 mb-3 shadow-sm">
+  <div class="card-body">
+    <h3>不動産会社の対応満足度：★<%= @review.satisfaction_level %></h3>
+    <%= @review.comment_reason_for_satisfaction %>
+  </div>
 </div>
 
-<div class="mb-5">
-  <h3>今後売却する人へのアドバイス</h3>
-  <%= @review.advice %>
+<div class="card p-3 mb-3 shadow-sm">
+  <div class="card-body">
+    <h3>今後売却する人へのアドバイス</h3>
+    <%= @review.advice %>
+  </div>
 </div>
 
-<div class="mb-5">
-  <h3>不動産会社に改善してほしい点</h3>
-  <% if @review.comment_improvement.blank? %>
-    <p>特になし</p>
-  <% else %>
-    <%= @review.comment_improvement %>
-  <% end %>
+<div class="card p-3 mb-3 shadow-sm">
+  <div class="card-body">
+    <h3>不動産会社に改善してほしい点</h3>
+    <% if @review.comment_improvement.blank? %>
+      <p>特になし</p>
+    <% else %>
+      <%= @review.comment_improvement %>
+    <% end %>
+  </div>
 </div>
 
-<table class="table w-50 mb-5">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">時期</th>
-      <th scope="col">価格</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">売却検討</th>
-      <td><%= format_date(@review.considering_selling_at) %></td>
-      <td>-----</td>
-    </tr>
-    <tr>
-      <th scope="row">査定依頼</th>
-      <td><%= format_date(@review.assessment_requested_at) %></td>
-      <td><%= format_price(@review.assessment_price) %></td>
-    </tr>
-    <tr>
-      <th scope="row">売出し</th>
-      <td><%= format_date(@review.sales_started_at) %></td>
-      <td><%= format_price(@review.sold_price) %></td>
-    </tr>
-    <tr>
-      <th scope="row">売却</th>
-      <td><%= format_date(@review.sold_at) %><p>(<%= months_after_the_sale(@review.sales_started_at, @review.sold_at) %>)</p></td>
-      <td><%= format_price(@review.contract_price) %></td>
-    </tr>
-    <tr>
-      <th scope="row">引き渡し</th>
-      <td><%= format_date(@review.delivered_at) %></td>
-      <td>-----</td>
-    </tr>
-  </tbody>
-</table>
+<div class="card pb- mb-5 shadow-sm">
+  <div class="card-body">
+    <table class="table w-50 mb-2">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">時期</th>
+          <th scope="col">価格</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">売却検討</th>
+          <td><%= format_date(@review.considering_selling_at) %></td>
+          <td>-----</td>
+        </tr>
+        <tr>
+          <th scope="row">査定依頼</th>
+          <td><%= format_date(@review.assessment_requested_at) %></td>
+          <td><%= format_price(@review.assessment_price) %></td>
+        </tr>
+        <tr>
+          <th scope="row">売出し</th>
+          <td><%= format_date(@review.sales_started_at) %></td>
+          <td><%= format_price(@review.sold_price) %></td>
+        </tr>
+        <tr>
+          <th scope="row">売却</th>
+          <td><%= format_date(@review.sold_at) %><p>(<%= months_after_the_sale(@review.sales_started_at, @review.sold_at) %>)</p></td>
+          <td><%= format_price(@review.contract_price) %></td>
+        </tr>
+        <tr>
+          <th scope="row">引き渡し</th>
+          <td><%= format_date(@review.delivered_at) %></td>
+          <td>-----</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%= render 'branches/company_info', branch: @review.branch %>
 
-<div class="fixed-bottom bg-light text-center p-4">
-  <%= link_to "査定依頼をする", new_assessment_form_path(ieul_branch_id:@review.branch.ieul_branch_id), class: 'btn btn-secondary w-25' %>
-</div>
+<%= render "layouts/to_assessment_form_button", ieul_branch_id: @review.branch.ieul_branch_id %>

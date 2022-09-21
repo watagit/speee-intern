@@ -1,5 +1,7 @@
 <div class="mb-5">
   <% @prefectures.each do |prefecture| %>
-    <%= link_to prefecture.name, prefecture_path(prefecture) %>
+    <%= link_to(prefecture_path(prefecture), class: 'text-decoration-none text-body') do %>
+      <button type="button" class="btn btn-primary mt-1"><%=prefecture.name%></button>
+    <% end %>
   <% end %>
 </div>

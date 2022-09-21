@@ -6,32 +6,13 @@
     <p>査定可能な企業がありません</p>
   <% else %>
     <% @prefecture.cities.each do |city| %>
-      <%= link_to city.name, city_path(city) %>
+      <%= link_to(city_path(city), class: 'text-decoration-none text-body') do %>
+        <button type="button" class="btn btn-info mt-1"><%=city.name%></button>
+      <% end %>
     <% end %>
   <% end %>
 </div>
 
-
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        市区町村
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <ul class="list-group list-group-flush">
-          <% @prefecture.cities.each do |city| %>
-            <%= link_to(city_path(city), class: 'list-group-item') do %>
-              <%=city.name%>
-            <% end %>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="mb-5">
   <% @prefecture_branches.each do |branch| %>

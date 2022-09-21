@@ -23,11 +23,11 @@
 
 <div class="mb-5">
 
-  <p class="fw-bold"><%= @branch.company.name %>についての口コミ<% unless @branch.reviews.blank? %>(平均評価 ★<%= @branch.average_satisfaction_level %>)<% end %></p>
-  <% if @branch.reviews.blank? %>
+  <p class="fw-bold"><%= @branch.company.name %>についての口コミ<% unless @branch_reviews.blank? %>(平均評価 ★<%= @branch.average_satisfaction_level %>)<% end %></p>
+  <% if @branch_reviews.blank? %>
     <p>口コミがありません</p>
   <% else %>
-    <%= render partial: 'review', collection: @branch.reviews, as: :review %>
+    <%= render partial: 'review', collection: @branch_reviews, as: :review %>
   <% end %>
 </div>
 

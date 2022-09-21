@@ -13,13 +13,5 @@
 </div>
 
 <div class="mb-5">
-  <% @city_branches.each do |branch| %>
-    <%= link_to(branch, class: 'text-decoration-none text-body') do %>
-      <div class="card mb-2">
-        <div class="card-body">
-          <%= render 'layouts/branch_info', branch: branch %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+  <%= render partial: 'layouts/branch_info', collection: @city_branches, as: :branch %>
 </div>

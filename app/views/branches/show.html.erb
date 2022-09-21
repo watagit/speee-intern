@@ -12,15 +12,7 @@
   <% if @branch.reviews.blank? %>
     <p>口コミがありません</p>
   <% else %>
-    <% @branch.reviews.each do |review| %>
-      <%= link_to(review, class: 'text-decoration-none text-body') do %>
-        <div class="card mb-2">
-          <div class="card-body">
-            <%= render 'review', review: review %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render partial: 'review', collection: @branch.reviews, as: :review %>
   <% end %>
 </div>
 

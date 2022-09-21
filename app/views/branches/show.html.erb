@@ -8,7 +8,8 @@
 </div>
 
 <div class="mb-5">
-  <p class="fw-bold"><%= @branch.company.name %>についての口コミ<% unless @branch.reviews.blank? %>(平均評価 ★<%= average_satisfaction_level(@branch.reviews) %>)<% end %></p>
+
+  <p class="fw-bold"><%= @branch.company.name %>についての口コミ<% unless @branch.reviews.blank? %>(平均評価 ★<%= @branch.average_satisfaction_level %>)<% end %></p>
   <% if @branch.reviews.blank? %>
     <p>口コミがありません</p>
   <% else %>

@@ -9,13 +9,13 @@
       <input id="block-01" type="checkbox" class="toggle">
       <label class="Label" for="block-01" style="cursor: pointer">市区町村を選択</label>
       <div class="content">
-          <ul class="list-group list-group-flush">
-            <% @prefecture.cities.each do |city| %>
-              <%= link_to(city_path(city), class: 'text-decoration-none text-body') do %>
-                <li class="list-group-item"><%= city.name %></li>
-              <% end %>
+        <ul class="list-group list-group-flush">
+          <% @prefecture.cities.each do |city| %>
+            <%= link_to(city_path(city), class: 'text-decoration-none text-body') do %>
+              <li class="list-group-item"><%= city.name %></li>
             <% end %>
-          </ul>
+          <% end %>
+        </ul>
       </div>
     </section>
   <% end %>

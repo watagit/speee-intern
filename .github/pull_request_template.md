@@ -50,8 +50,6 @@
   - [ ] [/thanks](http://localhost:3000/thanks)において、査定依頼が完了した文言が表示されている
 </details>
 
-<br>
-
 ## 解決する Issue
 
 - close #0

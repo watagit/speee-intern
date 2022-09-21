@@ -1,5 +1,59 @@
 <div class="mb-5">
-  <% @prefectures.each do |prefecture| %>
-    <%= link_to prefecture.name, prefecture_path(prefecture) %>
+  <h4>不動産会社のエリア(都道府県)を選択してください</h4>
+</div>
+<div class="mb-5">
+  <h3>北海道・東北地方</h3>
+  <% @hokkaidotohoku.each do |prefecture| %>
+    <%= link_to(prefecture_path(prefecture), class: 'text-decoration-none text-body') do %>
+      <button type="button" class="btn btn-primary mt-2"><%= prefecture.name %></button>
+    <% end %>
+  <% end %>
+</div>
+<div class="mb-5">
+  <h3>関東地方</h3>
+  <% @kanto.each do |prefecture| %>
+    <%= link_to(prefecture_path(prefecture), class: 'text-decoration-none text-body') do %>
+      <button type="button" class="btn btn-primary mt-2"><%= prefecture.name %></button>
+    <% end %>
+  <% end %>
+</div>
+<div class="mb-5">
+  <h3>中部地方</h3>
+  <% @chubu.each do |prefecture| %>
+    <%= link_to(prefecture_path(prefecture), class: 'text-decoration-none text-body') do %>
+      <button type="button" class="btn btn-primary mt-2"><%= prefecture.name %></button>
+    <% end %>
+  <% end %>
+</div>
+<div class="mb-5">
+  <h3>近畿地方</h3>
+  <% @kinki.each do |prefecture| %>
+    <%= link_to(prefecture_path(prefecture), class: 'text-decoration-none text-body') do %>
+      <button type="button" class="btn btn-primary mt-2"><%= prefecture.name %></button>
+    <% end %>
+  <% end %>
+</div>
+<div class="mb-5">
+  <h3>中国地方</h3>
+  <% @chugoku.each do |prefecture| %>
+    <%= link_to(prefecture_path(prefecture), class: 'text-decoration-none text-body') do %>
+      <button type="button" class="btn btn-primary mt-2"><%= prefecture.name %></button>
+    <% end %>
+  <% end %>
+</div>
+<div class="mb-5">
+  <h3>四国地方</h3>
+  <% @shikoku.each do |prefecture| %>
+    <%= link_to(prefecture_path(prefecture), class: 'text-decoration-none text-body') do %>
+      <button type="button" class="btn btn-primary mt-2"><%= prefecture.name %></button>
+    <% end %>
+  <% end %>
+</div>
+<div class="mb-5">
+  <h3>九州・沖縄地方</h3>
+  <% @kyusyuokinawa.each do |prefecture| %>
+    <%= link_to(prefecture_path(prefecture), class: 'text-decoration-none text-body') do %>
+      <button type="button" class="btn btn-primary mt-2"><%= prefecture.name %></button>
+    <% end %>
   <% end %>
 </div>

@@ -1,0 +1,13 @@
+name: RSpec
+on: push
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+          bundler-cache: true
+      - name: RSpec実行
+        run: bundle exec rspec

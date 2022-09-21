@@ -25,11 +25,6 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Bundler and gem install
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3 --path vendor/bundle
-
       - name: Database create and migrate
         run: |
           cp config/database.yml.ci config/database.yml

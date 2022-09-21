@@ -4,7 +4,7 @@ class AssessmentFormsController < ApplicationController
     @ieul_branch_id = params[:ieul_branch_id]
   end
 
-  def create
+  def create # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
     @assessment_form = AssessmentForm.new(assessment_form_params)
 
     api_params = generate_params(assessment_form_params)
@@ -17,14 +17,14 @@ class AssessmentFormsController < ApplicationController
         post_assessment(api_params)
         redirect_to thanks_path
       elsif @city.available_areas.size.positive?
-        flash[:alert] = '査定依頼ができませんでした。あなたの指定したエリアはこれらの不動産会社が対応可能です。'
+        flash[:alert] = t 'assessment_forms.flash.cannot_assess'
       else
-        flash[:alert] = '査定依頼ができませんでした。申し訳ございません。あなたの指定したエリアを査定できる不動産会社が見つかりませんでした。'
+        flash[:alert] = t 'assessment_forms.flash.not_found'
       end
       redirect_to @city
     else
       @ieul_branch_id = params[:assessment_form][:ieul_branch_id]
-      flash.now[:alert] = '査定情報の送信に失敗しました'
+      flash.now[:alert] = t 'assessment_forms.flash.failed_to_send'
       render action: :new, status: :unprocessable_entity
     end
   end

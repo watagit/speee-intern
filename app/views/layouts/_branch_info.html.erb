@@ -8,7 +8,11 @@
 </div>
 <div class="row">
   <div class="col">
-    <p>★<%= branch.average_satisfaction_level %></p>
+    <% if branch.average_satisfaction_level == 0 %>
+      <p>口コミがありません</p>
+    <% else %>
+      <p>★<%= branch.average_satisfaction_level %></p>
+    <% end %>
   </div>
   <div class="col-9">
     <p><%= branch.closed_day %></p>

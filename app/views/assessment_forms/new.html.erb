@@ -47,16 +47,22 @@
     </div>
   </div>
 
+
+
+
+
+
+
   <div class="row g-2">
     <div class="col-4">
       <div class="row mb-2">
         <div class="col-md-3">
-          <%= form.label :last_name, '姓 (必須)', class: "col-form-label" %>
+          <%= form.label :last_name_kana, 'せい (必須)', class: "last_name_kana" %>
         </div>
         <div class="col-md-8 col-lg-6">
-          <%= form.text_field :last_name, class: "form-control" %>
+          <%= form.text_field :last_name_kana, class: "form-control" %>
           <span class='text-danger'>
-            <% @assessment_form.errors.full_messages_for(:last_name).each do |message| %>
+            <% @assessment_form.errors.full_messages_for(:last_name_kana).each do |message| %>
               <%= message %>
             <% end %>
           </span>
@@ -66,12 +72,12 @@
     <div class="col-4">
       <div class="row mb-2">
         <div class="col-md-3">
-          <%= form.label :first_name, '名 (必須)', class: "col-form-label" %>
+          <%= form.label :first_name_kana, 'めい (必須)', class: "col-form-label" %>
         </div>
         <div class="col-md-8 col-lg-6">
-          <%= form.text_field :first_name, class: "form-control" %>
+          <%= form.text_field :first_name_kana, class: "form-control" %>
           <span class='text-danger'>
-            <% @assessment_form.errors.full_messages_for(:first_name).each do |message| %>
+            <% @assessment_form.errors.full_messages_for(:first_name_kana).each do |message| %>
               <%= message %>
             <% end %>
           </span>
@@ -81,33 +87,9 @@
   </div>
 
 
-  <div class="row mb-2">
-    <div class="col-md-3">
-        <%= form.label :last_name_kana, 'せい (必須)', class: "last_name_kana" %>
-      </div>
-      <div class="col-md-8 col-lg-6">
-        <%= form.text_field :last_name_kana, class: "form-control" %>
-        <span class='text-danger'>
-          <% @assessment_form.errors.full_messages_for(:last_name_kana).each do |message| %>
-            <%= message %>
-          <% end %>
-        </span>
-    </div>
-  </div>
 
-  <div class="row mb-2">
-    <div class="col-md-3">
-        <%= form.label :first_name_kana, 'めい (必須)', class: "col-form-label" %>
-      </div>
-      <div class="col-md-8 col-lg-6">
-        <%= form.text_field :first_name_kana, class: "form-control" %>
-        <span class='text-danger'>
-          <% @assessment_form.errors.full_messages_for(:first_name_kana).each do |message| %>
-            <%= message %>
-          <% end %>
-        </span>
-    </div>
-  </div>
+
+
 
   <div class="row mb-2">
     <div class="col-md-3">

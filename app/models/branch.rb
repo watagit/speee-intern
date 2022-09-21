@@ -18,10 +18,6 @@ class Branch < ApplicationRecord
 
     result = (Float(total_rating) / reviews.length).round(1)
 
-    if result.nan?
-      0
-    else
-      result
-    end
+    result.nan? ? 0 : result
   end
 end

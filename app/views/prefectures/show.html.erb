@@ -5,11 +5,18 @@
   <% if @prefecture.cities.blank? %>
     <p>査定可能な企業がありません</p>
   <% else %>
-    <% @prefecture.cities.each do |city| %>
-      <%= link_to(city_path(city), class: 'text-decoration-none text-body') do %>
-        <button type="button" class="btn btn-info mt-1"><%=city.name%></button>
-      <% end %>
-    <% end %>
+    <section class="accordion">
+      <input id="block-01" type="checkbox" class="toggle">
+      <label class="Label" for="block-01">市区町村を選択</label>
+      <div class="content">
+          <ul class="list-group list-group-flush">  
+            <% @prefecture.cities.each do |city| %>
+              <%= link_to(city_path(city), class: 'text-decoration-none text-body') do %>
+                <li class="list-group-item"><%=city.name%></li>
+              <%end%>
+            <% end %>
+          </ul>
+    </section>
   <% end %>
 </div>
 
@@ -26,3 +33,48 @@
   <% end %>
 </div>
 
+<style>
+  /*ベース*/
+.toggle {
+	display: none;
+}
+.Label {		/*タイトル*/
+	padding: 1em;
+	display: block;
+	color: #fff;
+	background:#0d6efd;
+}
+.Label::before{		/*タイトル横の矢印*/
+	content:"";
+	width: 6px;
+	height: 6px;
+	border-top: 2px solid #fff;
+	border-right: 2px solid #fff;
+	-webkit-transform: rotate(45deg);
+	position: absolute;
+	top:calc( 50% - 3px );
+	right: 20px;
+	transform: rotate(135deg);
+}
+.Label,
+.content {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	transform: translateZ(0);
+	transition: all 0.3s;
+}
+.content {		/*本文*/
+	height: 0;
+	margin-bottom:10px;
+	padding:0 20px;
+	overflow: hidden;
+}
+.toggle:checked + .Label + .content {	/*開閉時*/
+	height: auto;
+	padding:20px ;
+	transition: all .3s;
+}
+.toggle:checked + .Label::before {
+	transform: rotate(-45deg) !important;
+}
+</style>

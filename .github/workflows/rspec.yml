@@ -25,14 +25,6 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Bundler and gem install
         run: |
           gem install bundler

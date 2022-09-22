@@ -53,13 +53,13 @@ RSpec.describe AssessmentForm, type: :model do # rubocop:disable Metrics/BlockLe
         expect(@assessment_form.errors[:property_type]).to include('を入力してください')
       end
 
-      it '間取りの項目で未入力によるバリデーションエラーが発生する' do
-        expect(@assessment_form.errors[:property_room_plan]).to include('を入力してください')
-      end
+      # it '間取りの項目で未入力によるバリデーションエラーが発生する' do
+      #   expect(@assessment_form.errors[:property_room_plan]).to include('を入力してください')
+      # end
 
-      it '築年数の項目で未入力によるバリデーションエラーが発生する' do
-        expect(@assessment_form.errors[:property_constructed_year]).to include('を入力してください')
-      end
+      # it '築年数の項目で未入力によるバリデーションエラーが発生する' do
+      #   expect(@assessment_form.errors[:property_constructed_year]).to include('を入力してください')
+      # end
 
       it 'メールアドレスの項目で未入力によるバリデーションエラーが発生する' do
         expect(@assessment_form.errors[:user_email]).to include('は@や.を含む、有効なものを入力してください')

@@ -13,8 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-.header {
-  /* background-color: #7bd6fe; */
-  display: flex;
-}

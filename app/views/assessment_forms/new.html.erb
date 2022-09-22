@@ -256,8 +256,53 @@
 <% end %>
 
 <script>
-  window.onload = filterCityByPrefecture;
-  $(document).ready(filterCityByPrefecture);
+  window.onload = function(){
+    filterCityByPrefecture();
+    selectPropertyType();
+  }
+
+  $(document).ready(function(){
+    filterCityByPrefecture();
+    selectPropertyType();
+  })
+
+  function selectPropertyType(){
+    // 物件種別の変更の検知
+    const propertyType = $('#property');
+    const propertyExclusiveAreaElement = $('#property_exclusive_area')
+    const propertyLandAreaElement = $('#property_land_area')
+    const propertyBuildingAreaElement = $('#property_building_area')
+    const propertyFloorAreaElement = $('#property_building_area')
+    const propertyRoomPlanElement = $('#property_room_plan')
+
+    propertyType.change(() => {
+      const propertyTypeValue = propertyType.val()
+      console.log(propertyTypeValue)
+
+      // 分譲マンション選択時
+      if (propertyTypeValue === '1') {
+        console.log("1")
+        disableAll()
+        propertyExclusiveAreaElement.prop('disabled', false);
+        propertyRoomPlanElement.prop('disabled', false);
+      }
+      // 一戸建て
+      if (propertyTypeValue === '2') {
+        console.log("2")
+        disableAll()
+        propertyLandAreaElement.prop('disabled', false);
+        propertyBuildingAreaElement.prop('disabled', false);
+        propertyFloorAreaElement.prop('disabled', false);
+        propertyRoomPlanElement.prop('disabled', false);
+      }
+      // 土地の選択時
+      if (propertyTypeValue === '3') {
+        console.log("3")
+        disableAll()
+        propertyLandAreaElement.prop('disabled', false);
+      }
+    })
+  }
 
   function filterCityByPrefecture() {
     const prefectureElement = $('#prefecture');

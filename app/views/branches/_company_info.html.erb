@@ -1,5 +1,5 @@
-<div class="row pb-5 mb-5">
-  <div class="col">
+<div class="d-sm-flex d-block gap-5" style="margin-bottom: 10rem">
+  <div>
     <p class="fw-bold mb-3"><%= branch.company.name %>について</p>
     <p class="mb-0">企業名 : <%= branch.company.name %></p>
     <p class="mb-0">郵便番号 : <%= branch.zip_code %></p>
@@ -9,7 +9,7 @@
     <p class="mb-0">営業時間 : <%= branch.business_hours %></p>
     <p class="mb-0">定休日 : <%= branch.closed_day %></p>
   </div>
-  <div class="col d-flex align-items-center">
-    <%= image_tag branch.company.logo_url, :alt => 'company_logo' %>
+  <div class="d-flex align-items-center mt-3 mt-sm-0">
+    <%= image_tag branch.company.logo_url, :alt => 'company_logo', width: 150 %>
   </div>
 </div>

@@ -279,8 +279,6 @@
       const propertyTypeValue = propertyType.val()
       console.log(propertyTypeValue)
 
-      
-
       // 分譲マンション選択時
       if (propertyTypeValue === '1') {
         console.log("1")
@@ -297,7 +295,7 @@
         propertyFloorAreaElement.prop('disabled', false);
         propertyRoomPlanElement.prop('disabled', false);
       }
-      // 土地の選択時      
+      // 土地の選択時
       if (propertyTypeValue === '3') {
         console.log("3")
         disableAll()

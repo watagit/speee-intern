@@ -36,7 +36,7 @@ class AssessmentForm
 
     validates :property_address
     validates :user_email, length: { maximum: 100 },
-                        format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+                           format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
     validates :first_name, length: { maximum: 15 }
     validates :last_name, length: { maximum: 15 }
     validates :first_name_kana, length: { maximum: 31 }
@@ -45,11 +45,17 @@ class AssessmentForm
   end
 
   with_options numericality: { only_integer: true } do
-    validates :property_exclusive_area, if: Proc.new { |assessment_form| assessment_form.property_exclusive_area.present? }
-    validates :property_land_area, if: Proc.new { |assessment_form| assessment_form.property_land_area.present? }
-    validates :property_building_area, if: Proc.new { |assessment_form| assessment_form.property_building_area.present? }
-    validates :property_floor_area, if: Proc.new { |assessment_form| assessment_form.property_floor_area.present? }
-    validates :property_room_plan, if: Proc.new { |assessment_form| assessment_form.property_room_plan.present? }
-    validates :property_constructed_year, if: Proc.new { |assessment_form| assessment_form.property_constructed_year.present? }
+    validates :property_exclusive_area, if: proc { |assessment_form|
+                                              assessment_form.property_exclusive_area.present?
+                                            }
+    validates :property_land_area, if: proc { |assessment_form| assessment_form.property_land_area.present? }
+    validates :property_building_area, if: proc { |assessment_form|
+                                             assessment_form.property_building_area.present?
+                                           }
+    validates :property_floor_area, if: proc { |assessment_form| assessment_form.property_floor_area.present? }
+    validates :property_room_plan, if: proc { |assessment_form| assessment_form.property_room_plan.present? }
+    validates :property_constructed_year, if: proc { |assessment_form|
+                                                assessment_form.property_constructed_year.present?
+                                              }
   end
 end

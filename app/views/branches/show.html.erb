@@ -2,6 +2,20 @@
   <%= @branch.company.name %><%= @branch.name %>
 </h1>
 
+<div class='mb-3'>
+  <%= link_to 'Home', root_path , class: 'inline text-decoration-none text-secondary' %>
+  <span class='px-3'>></span>
+  <%= link_to "#{@branch.city.prefecture.name}", prefecture_path(@branch.city.prefecture) , class: 'inline text-decoration-none text-secondary' %>
+  <span class='px-3'>></span>
+  <%= link_to "#{@branch.city.name}", @branch.city, class: 'inline text-decoration-none text-secondary' %>
+  <span class='px-3'>></span>
+  <% if @branch.name %>
+    <span><%= @branch.name %></span>
+  <% else %>
+    <span><%= @branch.company.name %></span>
+  <% end %>
+</div>
+
 <div class="mb-5">
   <h3><%= @branch.company.catch_copy %></h3>
   <p><%= @branch.introduction %></p>
@@ -9,11 +23,11 @@
 
 <div class="mb-5">
 
-  <p class="fw-bold"><%= @branch.company.name %>についての口コミ<% unless @branch.reviews.blank? %>(平均評価 ★<%= @branch.average_satisfaction_level %>)<% end %></p>
-  <% if @branch.reviews.blank? %>
+  <p class="fw-bold"><%= @branch.company.name %>についての口コミ<% unless @branch_reviews.blank? %>(平均評価 ★<%= @branch.average_satisfaction_level %>)<% end %></p>
+  <% if @branch_reviews.blank? %>
     <p>口コミがありません</p>
   <% else %>
-    <%= render partial: 'review', collection: @branch.reviews, as: :review %>
+    <%= render partial: 'review', collection: @branch_reviews, as: :review %>
   <% end %>
 </div>
 

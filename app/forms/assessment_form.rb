@@ -25,12 +25,12 @@ class AssessmentForm
       validates :ieul_branch_id
       validates :property_city
       validates :property_type
-      # validates :property_exclusive_area
-      # validates :property_land_area
-      # validates :property_building_area
+      validates :property_exclusive_area
+      validates :property_land_area
+      validates :property_building_area
       validates :property_building_area_unit
-      # validates :property_floor_area
-      # validates :property_room_plan
+      validates :property_floor_area
+      validates :property_room_plan
       validates :property_constructed_year
     end
 

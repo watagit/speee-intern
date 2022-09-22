@@ -25,13 +25,16 @@ class AssessmentForm
       validates :ieul_branch_id
       validates :property_city
       validates :property_type
-      validates :property_exclusive_area
-      validates :property_land_area
-      validates :property_building_area
+
+      # NOTE: 査定フォーム周り変更のため一旦コメントアウト
+      # TODO: 後に削除
+      # validates :property_exclusive_area
+      # validates :property_land_area
+      # validates :property_building_area
       validates :property_building_area_unit
-      validates :property_floor_area
-      validates :property_room_plan
-      validates :property_constructed_year
+      # validates :property_floor_area
+      # validates :property_room_plan
+      # validates :property_constructed_year
     end
 
     validates :property_address
@@ -42,5 +45,20 @@ class AssessmentForm
     validates :first_name_kana, length: { maximum: 31 }
     validates :last_name_kana, length: { maximum: 31 }
     validates :user_tel, format: { with: /\A0\d{9,10}\z/ }
+  end
+
+  with_options numericality: { only_integer: true } do
+    validates :property_exclusive_area, if: proc { |assessment_form|
+                                              assessment_form.property_exclusive_area.present?
+                                            }
+    validates :property_land_area, if: proc { |assessment_form| assessment_form.property_land_area.present? }
+    validates :property_building_area, if: proc { |assessment_form|
+                                             assessment_form.property_building_area.present?
+                                           }
+    validates :property_floor_area, if: proc { |assessment_form| assessment_form.property_floor_area.present? }
+    validates :property_room_plan, if: proc { |assessment_form| assessment_form.property_room_plan.present? }
+    validates :property_constructed_year, if: proc { |assessment_form|
+                                                assessment_form.property_constructed_year.present?
+                                              }
   end
 end

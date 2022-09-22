@@ -168,10 +168,10 @@
 
   <div class="row mb-2">
     <div class="col-md-3">
-      <%= form.label :property_exclusive_area, '専有面積 (必須)', class: "col-form-label" %>
+      <%= form.label :property_exclusive_area, '専有面積', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_exclusive_area, id: "property_exclusive_area", class: "form-control", value: 0, disabled: true %>
+      <%= form.number_field :property_exclusive_area, id: "property_exclusive_area", class: "form-control", disabled: true %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_exclusive_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -182,10 +182,10 @@
 
   <div class="row mb-2">
     <div class="col-md-3">
-      <%= form.label :property_land_area, '土地面積 (必須)', class: "col-form-label" %>
+      <%= form.label :property_land_area, '土地面積', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_land_area, id: "property_land_area", class: "form-control", value: 0, disabled: true %>
+      <%= form.number_field :property_land_area, id: "property_land_area", class: "form-control", disabled: true %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_land_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -196,10 +196,10 @@
 
   <div class="row mb-2">
     <div class="col-md-3">
-      <%= form.label :property_building_area, '建物面積 (必須)', class: "col-form-label" %>
+      <%= form.label :property_building_area, '建物面積', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_building_area, id: "property_building_area", class: "form-control", value: 0, disabled: true %>
+      <%= form.number_field :property_building_area, id: "property_building_area", class: "form-control", disabled: true %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_building_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -210,10 +210,10 @@
 
   <div class="row mb-2">
     <div class="col-md-3">
-      <%= form.label :property_floor_area, '延床面積 (必須)', class: "col-form-label" %>
+      <%= form.label :property_floor_area, '延床面積', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_floor_area, id: "property_building_area", class: "form-control", value: 0, disabled: true %>
+      <%= form.number_field :property_floor_area, id: "property_building_area", class: "form-control", disabled: true %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_floor_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -224,7 +224,7 @@
 
   <div class="row mb-2">
     <div class="col-md-3">
-      <%= form.label :property_room_plan, '間取り (必須)', class: "col-form-label" %>
+      <%= form.label :property_room_plan, '間取り', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
       <%= form.select :property_room_plan, [['1R(ワンルーム)',1], ['1K/1DK', 2], ['1LK/1LDK', 3], ['2K/2DLK', 4], ['2LK / 2LDK', 5], ['3K/3DK', 6], ['3LK/3LDK', 7], ['4K/4DK', 8], ['4LK/4LDK', 9], ['5K/5DK',10], ['5LK/5LDK', 11], ['6K/6DK', 12], ['6LK/6LDK以上', 13]], { prompt: '間取りを選択してください' }, {id: "property_room_plan", class: "form-select", disabled: true } %>
@@ -238,10 +238,10 @@
 
   <div class="row mb-2">
     <div class="col-md-3">
-      <%= form.label :property_constructed_year, '築年数 (必須)', class: "col-form-label" %>
+      <%= form.label :property_constructed_year, '築年数', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_constructed_year, class: "form-control" %>
+      <%= form.number_field :property_constructed_year,{id: "property_constructed_year",  class: "form-control", disabled: true} %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_constructed_year).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -274,6 +274,7 @@
     const propertyBuildingAreaElement = $('#property_building_area')
     const propertyFloorAreaElement = $('#property_building_area')
     const propertyRoomPlanElement = $('#property_room_plan')
+    const propertyConstructedYearElement = $('#property_constructed_year')
 
     propertyType.change(() => {
       const propertyTypeValue = propertyType.val()
@@ -283,23 +284,22 @@
 
       // 分譲マンション選択時
       if (propertyTypeValue === '1') {
-        console.log("1")
         disableAll()
         propertyExclusiveAreaElement.prop('disabled', false);
         propertyRoomPlanElement.prop('disabled', false);
+        propertyConstructedYearElement.prop('disabled', false);
       }
       // 一戸建て
       if (propertyTypeValue === '2') {
-        console.log("2")
         disableAll()
         propertyLandAreaElement.prop('disabled', false);
         propertyBuildingAreaElement.prop('disabled', false);
         propertyFloorAreaElement.prop('disabled', false);
         propertyRoomPlanElement.prop('disabled', false);
+        propertyConstructedYearElement.prop('disabled', false);
       }
       // 土地の選択時      
       if (propertyTypeValue === '3') {
-        console.log("3")
         disableAll()
         propertyLandAreaElement.prop('disabled', false);
       }
@@ -332,12 +332,14 @@
     const propertyBuildingAreaElement = $('#property_building_area')
     const propertyFloorAreaElement = $('#property_building_area')
     const propertyRoomPlanElement = $('#property_room_plan')
+    const propertyConstructedYearElement = $('#property_constructed_year')
 
     propertyExclusiveAreaElement.prop('disabled', true);
     propertyLandAreaElement.prop('disabled', true);
     propertyBuildingAreaElement.prop('disabled', true);
     propertyFloorAreaElement.prop('disabled', true);
     propertyRoomPlanElement.prop('disabled', true);
+    propertyConstructedYearElement.prop('disabled', true);
   }
 
   async function fetchCitiesByPrefectureID(id) {

@@ -143,7 +143,7 @@
       <%= form.label :property_type, '物件種別 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.select :property_type, [['分譲マンション',1], ['一戸建て', 2], ['土地', 3]], {prompt: '物件種別を選択してください'}, {id: "property", class: "form-select" } %>
+      <%= form.select :property_type, [['分譲マンション',1], ['一戸建て', 2], ['土地', 3]], {prompt: '物件種別を選択してください'}, {class: "form-select"} %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_type).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -171,7 +171,7 @@
       <%= form.label :property_exclusive_area, '専有面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_exclusive_area, id: "property_exclusive_area", class: "form-control", disabled: true %>
+      <%= form.number_field :property_exclusive_area, class: "form-control", value: 0 %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_exclusive_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -185,7 +185,7 @@
       <%= form.label :property_land_area, '土地面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_land_area, id: "property_land_area", class: "form-control", disabled: true %>
+      <%= form.number_field :property_land_area, class: "form-control", value: 0 %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_land_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -199,7 +199,7 @@
       <%= form.label :property_building_area, '建物面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_building_area, id: "property_building_area", class: "form-control", disabled: true %>
+      <%= form.number_field :property_building_area, class: "form-control", value: 0 %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_building_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -213,7 +213,7 @@
       <%= form.label :property_floor_area, '延床面積 (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.number_field :property_floor_area, id: "property_building_area", class: "form-control", disabled: true %>
+      <%= form.number_field :property_floor_area, class: "form-control", value: 0 %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_floor_area).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -227,7 +227,7 @@
       <%= form.label :property_room_plan, '間取り (必須)', class: "col-form-label" %>
     </div>
     <div class="col-md-8 col-lg-6">
-      <%= form.select :property_room_plan, [['1R(ワンルーム)',1], ['1K/1DK', 2], ['1LK/1LDK', 3], ['2K/2DLK', 4], ['2LK / 2LDK', 5], ['3K/3DK', 6], ['3LK/3LDK', 7], ['4K/4DK', 8], ['4LK/4LDK', 9], ['5K/5DK',10], ['5LK/5LDK', 11], ['6K/6DK', 12], ['6LK/6LDK以上', 13]], { prompt: '間取りを選択してください' }, {id: "property_room_plan", class: "form-select", disabled: true } %>
+      <%= form.select :property_room_plan, [['1R(ワンルーム)',1], ['1K/1DK', 2], ['1LK/1LDK', 3], ['2K/2DLK', 4], ['2LK / 2LDK', 5], ['3K/3DK', 6], ['3LK/3LDK', 7], ['4K/4DK', 8], ['4LK/4LDK', 9], ['5K/5DK',10], ['5LK/5LDK', 11], ['6K/6DK', 12], ['6LK/6LDK以上', 13]], { prompt: '間取りを選択してください' }, { class: "form-select" } %>
       <span class='text-danger'>
         <% @assessment_form.errors.full_messages_for(:property_room_plan).each do |message| %>
           <%= message unless message.include?('数値で入力してください') %>
@@ -256,55 +256,8 @@
 <% end %>
 
 <script>
-  window.onload = function(){
-    filterCityByPrefecture();
-    selectPropertyType();
-  }
-
-  $(document).ready(function(){
-    filterCityByPrefecture();
-    selectPropertyType();
-  })
-
-  function selectPropertyType(){
-    // 物件種別の変更の検知
-    const propertyType = $('#property');
-    const propertyExclusiveAreaElement = $('#property_exclusive_area')
-    const propertyLandAreaElement = $('#property_land_area')
-    const propertyBuildingAreaElement = $('#property_building_area')
-    const propertyFloorAreaElement = $('#property_building_area')
-    const propertyRoomPlanElement = $('#property_room_plan')
-
-    propertyType.change(() => {
-      const propertyTypeValue = propertyType.val()
-      console.log(propertyTypeValue)
-
-      
-
-      // 分譲マンション選択時
-      if (propertyTypeValue === '1') {
-        console.log("1")
-        disableAll()
-        propertyExclusiveAreaElement.prop('disabled', false);
-        propertyRoomPlanElement.prop('disabled', false);
-      }
-      // 一戸建て
-      if (propertyTypeValue === '2') {
-        console.log("2")
-        disableAll()
-        propertyLandAreaElement.prop('disabled', false);
-        propertyBuildingAreaElement.prop('disabled', false);
-        propertyFloorAreaElement.prop('disabled', false);
-        propertyRoomPlanElement.prop('disabled', false);
-      }
-      // 土地の選択時      
-      if (propertyTypeValue === '3') {
-        console.log("3")
-        disableAll()
-        propertyLandAreaElement.prop('disabled', false);
-      }
-    })
-  }
+  window.onload = filterCityByPrefecture;
+  $(document).ready(filterCityByPrefecture);
 
   function filterCityByPrefecture() {
     const prefectureElement = $('#prefecture');
@@ -324,20 +277,6 @@
         });
       });
     });
-  }
-
-  function disableAll(){
-    const propertyExclusiveAreaElement = $('#property_exclusive_area')
-    const propertyLandAreaElement = $('#property_land_area')
-    const propertyBuildingAreaElement = $('#property_building_area')
-    const propertyFloorAreaElement = $('#property_building_area')
-    const propertyRoomPlanElement = $('#property_room_plan')
-
-    propertyExclusiveAreaElement.prop('disabled', true);
-    propertyLandAreaElement.prop('disabled', true);
-    propertyBuildingAreaElement.prop('disabled', true);
-    propertyFloorAreaElement.prop('disabled', true);
-    propertyRoomPlanElement.prop('disabled', true);
   }
 
   async function fetchCitiesByPrefectureID(id) {

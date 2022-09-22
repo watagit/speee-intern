@@ -52,9 +52,9 @@ RSpec.describe AssessmentForm, type: :model do # rubocop:disable Metrics/BlockLe
       it '物件種別の項目で未入力によるバリデーションエラーが発生する' do
         expect(@assessment_form.errors[:property_type]).to include('を入力してください')
       end
-      
+
       # NOTE: 査定フォーム周り変更のため一旦コメントアウト
-      # TODO: 後に削除 
+      # TODO: 後に削除
       # it '間取りの項目で未入力によるバリデーションエラーが発生する' do
       #   expect(@assessment_form.errors[:property_room_plan]).to include('を入力してください')
       # end

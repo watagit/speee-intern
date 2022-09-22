@@ -25,6 +25,9 @@ class AssessmentForm
       validates :ieul_branch_id
       validates :property_city
       validates :property_type
+
+      # NOTE: 査定フォーム周り変更のため一旦コメントアウト
+      # TODO: 後に削除 
       # validates :property_exclusive_area
       # validates :property_land_area
       # validates :property_building_area

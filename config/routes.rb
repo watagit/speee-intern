@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get '/ops/heartbeat', to: 'health_check#index'
   get '/thanks', to: 'thanks#show'
-  get '/prefectures/:id', to: 'prefectures#show'
 
   resources :branches, only: :show
   resources :reviews, only: :show

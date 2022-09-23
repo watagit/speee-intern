@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root 'home#show'
 
-  get '/ops/heartbeat', to: 'health_check#index'
-
   resources :branches, only: :show
   resources :reviews, only: :show
   resources :assessment_forms, only: %i[new create]

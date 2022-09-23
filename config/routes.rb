@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   resources :cities, only: :show
   resources :thanks, only: :index
 
-  get '/api/prefectures/:id/cities', to: 'prefectures#city'
+  namespace :api do
+    resources :prefectures, only: :show
+  end
 end

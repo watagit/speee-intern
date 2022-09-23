@@ -9,9 +9,4 @@ class PrefecturesController < ApplicationController
       |a, b| b.average_satisfaction_level <=> a.average_satisfaction_level
     end
   end
-
-  def city
-    prefecture = Prefecture.find(params[:id])
-    render json: prefecture.cities
-  end
 end

@@ -326,7 +326,7 @@
   }
 
   async function fetchCitiesByPrefectureID(id) {
-    const response = await fetch(`/api/prefectures/${id}/cities`);
+    const response = await fetch(`/api/prefectures/${id}`);
     return await response.json();
   }
 </script>
